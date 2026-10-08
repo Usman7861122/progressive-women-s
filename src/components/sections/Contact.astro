@@ -1,0 +1,50 @@
+---
+import ContactForm from '../react/ContactForm';
+import { site } from '../../data/site';
+
+const q = encodeURIComponent(site.mapQuery);
+---
+
+<section id="contact" class="section bg-pearl-50">
+  <div class="wrap">
+    <div class="mb-14 max-w-2xl">
+      <h2 class="h2 text-plum-900">Get in touch</h2>
+      <p class="lede mt-6">Request a visit and our team will call you to confirm. We are happy to answer your questions first.</p>
+    </div>
+
+    <div class="grid gap-14 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <div class="aspect-[4/3] overflow-hidden bg-pearl-200 lg:aspect-auto lg:h-[26rem]">
+          <iframe
+            title="Map showing Progressive Women's Health in Friendswood, Texas"
+            src={`https://www.google.com/maps?q=${q}&output=embed`}
+            class="h-full w-full border-0 [filter:grayscale(.35)_contrast(1.05)]"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <dl class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div>
+            <dt class="font-display text-2xl text-plum-900">Visit us</dt>
+            <dd class="mt-1 text-muted">
+              {site.address[0]}<br />{site.address[1]}<br />
+              <a class="link-u font-semibold text-orchid-600" href={`https://www.google.com/maps/dir/?api=1&destination=${q}`} target="_blank" rel="noopener">Get directions</a>
+            </dd>
+          </div>
+          <div>
+            <dt class="font-display text-2xl text-plum-900">Call us</dt>
+            <dd class="mt-1 text-muted">
+              Appointments: <a class="link-u" href={`tel:${site.phoneBook}`}>{site.phoneBook}</a><br />
+              General questions: <a class="link-u" href={`tel:${site.phoneInfo}`}>{site.phoneInfo}</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="bg-pearl-100 p-8 md:p-12">
+        <ContactForm client:visible phone={site.phoneBook} />
+      </div>
+    </div>
+  </div>
+</section>

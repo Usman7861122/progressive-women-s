@@ -1,0 +1,30 @@
+---
+import { insurances } from '../../data/content';
+import { site } from '../../data/site';
+import { logoFor } from '../../lib/logos';
+
+const items = insurances.map((n) => ({ ...n, logo: logoFor(n.slug) }));
+---
+
+<section id="insurance" class="section bg-pearl-100">
+  <div class="wrap grid gap-14 lg:grid-cols-12 lg:gap-20">
+    <div class="lg:col-span-4">
+      <h2 class="h2 text-plum-900">Insurances accepted</h2>
+      <p class="lede mt-6">
+        Coverage depends on your plan. Please call us with questions, and have your insurance details ready when you book.
+      </p>
+      <a href={`tel:${site.phoneInfo}`} class="link-u mt-8 inline-block font-semibold text-orchid-600">Call {site.phoneInfo}</a>
+    </div>
+    <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-4">
+      {items.map((n) => (
+        <li class="flex h-32 items-center justify-center rounded-lg bg-white px-4 transition-shadow duration-300 hover:shadow-[0_10px_30px_-12px_rgba(38,13,45,.25)]">
+          {n.logo ? (
+            <img src={n.logo} alt={n.name} loading="lazy" class="h-24 w-full object-contain mix-blend-multiply transition-transform duration-500 hover:scale-105" />
+          ) : (
+            <span class="text-center font-display text-xl leading-tight text-plum-800">{n.name}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

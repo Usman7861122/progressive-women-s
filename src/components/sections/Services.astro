@@ -1,0 +1,41 @@
+---
+import { services } from '../../data/content';
+import { photo } from '../../data/images';
+import FlipCard from '../ui/FlipCard.astro';
+
+interface Props { all?: boolean }
+const { all = false } = Astro.props;
+
+const featured = ['pelvic-pain', 'contraception', 'hysteroscopy', 'menopause', 'irregular-bleeding', 'telemedicine'];
+const items = all ? services : services.filter((s) => featured.includes(s.slug));
+---
+
+<section id="services" class="section on-dark bg-plum-900 text-pearl-50">
+  <div class="wrap">
+    <div class="mb-14 grid gap-6 lg:grid-cols-12">
+      <h2 class="h2 lg:col-span-7">Services we offer</h2>
+      <p class="lede lg:col-span-5 lg:self-end">
+        From annual care to complex procedures, everything happens in one welcoming office. Hover over a card to learn more.
+      </p>
+    </div>
+
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((s) => (
+        <FlipCard
+          id={s.slug}
+          title={s.name}
+          text={s.text}
+          img={photo(s.img, 800, 800)}
+          href={`/services#${s.slug}`}
+          class="aspect-[4/3] sm:aspect-square"
+        />
+      ))}
+    </ul>
+
+    {!all && (
+      <div class="mt-14 text-center">
+        <a href="/services" class="btn btn-light">View all services</a>
+      </div>
+    )}
+  </div>
+</section>

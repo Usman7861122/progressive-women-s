@@ -1,0 +1,31 @@
+---
+import { featuredTopics } from '../../data/content';
+import { photo } from '../../data/images';
+---
+
+<section id="education" class="section bg-pearl-100">
+  <div class="wrap">
+    <div class="mb-16 flex flex-wrap items-end justify-between gap-8">
+      <div class="max-w-xl">
+        <h2 class="h2 text-plum-900">Educational information</h2>
+        <p class="lede mt-6">Short, clear guides to help you feel ready before your visit.</p>
+      </div>
+      <a href="/education" class="btn btn-solid">View all topics</a>
+    </div>
+
+    <ul class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+      {featuredTopics.map((t, i) => (
+        <li class:list={[i % 2 === 1 && 'lg:mt-20']}>
+          <a href={`/education#${t.slug}`} class="group block">
+            <div class="aspect-square overflow-hidden rounded-lg bg-pearl-200">
+              <img src={photo(t.img, 700, 700)} alt="" width="700" height="700" loading="lazy" class="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105" />
+            </div>
+            <h3 class="mt-6 font-display text-3xl leading-tight text-plum-900">{t.title}</h3>
+            <p class="mt-2 text-muted">{t.text}</p>
+            <span class="link-u mt-4 inline-block font-semibold text-orchid-600">Read the guide</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+---
+import '@fontsource/cormorant-garamond/300.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import Header from '../components/react/Header';
+import Footer from '../components/sections/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  overHero?: boolean;
+}
+const {
+  title,
+  description = 'Gynecology and obstetrics in Friendswood, TX with Dr. Asia Mohsin. Clinical excellence, compassionate care and virtual visits.',
+  overHero = false,
+} = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Friendswood, TX OB/GYN`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Physician',
+  name: site.legal,
+  medicalSpecialty: 'Obstetric',
+  telephone: site.phoneBook,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '907 South Friendswood Drive, Suite 109',
+    addressLocality: 'Friendswood',
+    addressRegion: 'TX',
+    postalCode: '77546',
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: site.rating.score, reviewCount: site.rating.count },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#260d2d" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <title>{fullTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-pearl-50 focus:px-5 focus:py-2 focus:text-plum-900">Skip to content</a>
+    <Header client:load overHero={overHero} />
+    <main id="main"><slot /></main>
+    <Footer />
+  </body>
+</html>

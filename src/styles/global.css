@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* Brand: built from the logo magenta (#990099). Cool pearl + deep aubergine, champagne hairlines. */
+@theme {
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-plum-950: #1a0820;
+  --color-plum-900: #260d2d;
+  --color-plum-800: #381741;
+  --color-plum-700: #4d2358;
+  --color-orchid-700: #7a0a7e;
+  --color-orchid-600: #990099;
+  --color-orchid-300: #d68fd8;
+  --color-orchid-200: #e8c3ea;
+  --color-pearl-50: #fbf8fb;
+  --color-pearl-100: #f4eef4;
+  --color-pearl-200: #e8dde9;
+  --color-champagne: #c9a66b;
+  --color-ink: #2a1f2e;
+  --color-muted: #6a5870;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { overflow-x: clip; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    @apply bg-pearl-50 font-sans text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+  :focus-visible { outline: 2px solid var(--color-orchid-300); outline-offset: 3px; border-radius: 2px; }
+  ::selection { background: var(--color-orchid-200); color: var(--color-plum-950); }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-7xl px-6 md:px-10; }
+  .section { @apply py-24 md:py-36; }
+
+  .h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+    line-height: 1.02;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .lede { @apply max-w-prose text-lg text-muted; }
+  .on-dark .lede { color: color-mix(in srgb, var(--color-pearl-50) 72%, transparent); }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors duration-300;
+  }
+  .btn-solid { @apply bg-orchid-600 text-white hover:bg-orchid-700; }
+  .btn-light { @apply bg-pearl-50 text-plum-900 hover:bg-orchid-200; }
+  .btn-line  { @apply border border-current/40 hover:border-current hover:bg-white/10; }
+
+  /* Every text link: no underline, a soft rounded pill on hover (same as the main navigation).
+     Side padding is cancelled by the negative margin, so text never moves. */
+  .link-u {
+    border-radius: 9999px;
+    padding: .3rem .75rem;
+    margin-inline: -.75rem;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    transition: background-color .3s, color .3s;
+  }
+  .link-u:hover, .link-u:focus-visible,
+  :is(a, .group):hover .link-u { background-color: color-mix(in srgb, var(--color-orchid-600) 10%, transparent); }
+  .on-dark .link-u:hover, .on-dark .link-u:focus-visible,
+  .on-dark :is(a, .group):hover .link-u { background-color: color-mix(in srgb, var(--color-pearl-50) 12%, transparent); }
+  /* Same look as the main navigation: no underline, soft rounded pill on hover. On dark sections the pill is light. */
+  .nav-pill {
+    display: inline-flex; align-items: center; border-radius: 9999px;
+    padding: .5rem 1rem; font-size: .875rem; line-height: 1.25rem; font-weight: 500;
+    transition: background-color .3s, color .3s;
+  }
+  .nav-pill:hover, .nav-pill:focus-visible { background-color: color-mix(in srgb, var(--color-orchid-600) 10%, transparent); }
+  .on-dark .nav-pill { color: color-mix(in srgb, var(--color-pearl-50) 85%, transparent); }
+  .on-dark .nav-pill:hover, .on-dark .nav-pill:focus-visible { background-color: color-mix(in srgb, var(--color-pearl-50) 12%, transparent); color: var(--color-pearl-50); }
+}
+
+/* ---------- Flip cards (Services = horizontal flip, Conditions = vertical flip) ---------- */
+.flip { perspective: 1400px; }
+.flip-inner {
+  position: relative; height: 100%; width: 100%;
+  transform-style: preserve-3d;
+  transition: transform .85s cubic-bezier(.22, 1, .36, 1);
+  border-radius: .5rem;
+}
+.flip:hover .flip-inner,
+.flip:focus-within .flip-inner { transform: rotateY(180deg); }
+.flip[data-axis="x"]:hover .flip-inner,
+.flip[data-axis="x"]:focus-within .flip-inner { transform: rotateX(180deg); }
+
+.flip-face {
+  position: absolute; inset: 0; overflow: hidden; border-radius: .5rem;
+  -webkit-backface-visibility: hidden; backface-visibility: hidden;
+}
+.flip-back { transform: rotateY(180deg); }
+.flip[data-axis="x"] .flip-back { transform: rotateX(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner { transition: none; transform-style: flat; }
+  .flip:hover .flip-inner, .flip:focus-within .flip-inner,
+  .flip[data-axis="x"]:hover .flip-inner, .flip[data-axis="x"]:focus-within .flip-inner { transform: none; }
+  .flip-back, .flip[data-axis="x"] .flip-back { transform: none; opacity: 0; transition: opacity .3s; }
+  .flip:hover .flip-back, .flip:focus-within .flip-back { opacity: 1; }
+}

@@ -1,0 +1,12 @@
+---
+import Testimonials from '../react/Testimonials';
+import { reviews } from '../../data/content';
+import { site } from '../../data/site';
+---
+
+<section id="reviews" class="section bg-plum-900 text-pearl-50">
+  <div class="wrap">
+    <h2 class="sr-only">Patient testimonials</h2>
+    <Testimonials client:visible items={reviews} rating={site.rating.score} count={site.rating.count} />
+  </div>
+</section>

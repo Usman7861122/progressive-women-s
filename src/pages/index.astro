@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/react/Hero';
+import Welcome from '../components/sections/Welcome.astro';
+import Services from '../components/sections/Services.astro';
+import Conditions from '../components/sections/Conditions.astro';
+import FirstVisit from '../components/sections/FirstVisit.astro';
+import Education from '../components/sections/Education.astro';
+import Affiliations from '../components/sections/Affiliations.astro';
+import Insurance from '../components/sections/Insurance.astro';
+import Reviews from '../components/sections/Reviews.astro';
+import Contact from '../components/sections/Contact.astro';
+import Blog from '../components/sections/Blog.astro';
+import { site } from '../data/site';
+import { photo, IMG } from '../data/images';
+---
+
+<BaseLayout overHero>
+  <Hero client:load image={photo(IMG.hero, 2400)} phone={site.phoneBook} rating={site.rating.score} reviews={site.rating.count} />
+  <Welcome />
+  <Services />
+  <Conditions />
+  <FirstVisit />
+  <Education />
+  <Affiliations />
+  <Insurance />
+  <Reviews />
+  <Contact />
+  <Blog />
+</BaseLayout>

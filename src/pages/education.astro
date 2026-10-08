@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { topics } from '../data/content';
+const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+
+<BaseLayout title="Educational information">
+  <section class="section pt-40">
+    <div class="wrap">
+      <h1 class="h2 text-plum-900">Educational information</h1>
+      <p class="lede mt-6">Plain-language guides on the topics patients ask about most. Full articles are coming soon.</p>
+      <ul class="mt-14 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+        {topics.map((t) => (
+          <li id={slug(t)} class="border-t border-plum-900/15 py-5 font-display text-2xl text-plum-900">{t}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

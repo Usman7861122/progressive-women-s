@@ -1,0 +1,23 @@
+---
+import { affiliations } from '../../data/content';
+import { logoFor } from '../../lib/logos';
+
+const items = affiliations.map((a) => ({ ...a, logo: logoFor(a.slug) }));
+---
+
+<section id="affiliations" class="bg-pearl-50 py-20 md:py-28" aria-labelledby="aff-title">
+  <div class="wrap text-center">
+    <h2 id="aff-title" class="font-display text-3xl text-plum-900 md:text-4xl">Affiliations and recognition</h2>
+    <ul class="mx-auto mt-14 flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-10">
+      {items.map((a) => (
+        <li class="flex h-20 items-center">
+          {a.logo ? (
+            <img src={a.logo} alt={a.name} loading="lazy" class="h-20 w-auto max-w-[8.5rem] object-contain mix-blend-multiply transition-transform duration-500 hover:scale-105" />
+          ) : (
+            <span class="max-w-[14rem] font-display text-xl leading-snug text-muted">{a.name}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

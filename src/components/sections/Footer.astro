@@ -1,0 +1,42 @@
+---
+import { site, nav } from '../../data/site';
+---
+
+<footer class="on-dark bg-plum-950 text-pearl-50/80">
+  <div class="wrap grid gap-12 py-20 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <img src="/images/logo.png" alt={site.name} width="455" height="197" class="h-20 w-auto brightness-0 invert" loading="lazy" />
+      <p class="mt-6 max-w-sm font-display text-2xl font-light text-pearl-50">{site.tagline}</p>
+    </div>
+
+    <nav class="md:col-span-3" aria-label="Footer">
+      <h2 class="font-display text-2xl text-pearl-50">Explore</h2>
+      <ul class="-ml-4 mt-3 flex flex-col items-start">
+        {nav.map((n) => <li><a href={n.href} class="nav-pill">{n.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="md:col-span-4">
+      <h2 class="font-display text-2xl text-pearl-50">Contact</h2>
+      <address class="mt-4 not-italic leading-relaxed">
+        {site.address[0]}<br />{site.address[1]}<br />
+        <a class="link-u" href={`tel:${site.phoneBook}`}>{site.phoneBook}</a> (appointments)<br />
+        <a class="link-u" href={`tel:${site.phoneInfo}`}>{site.phoneInfo}</a> (general)
+      </address>
+      <ul class="mt-6 flex gap-6">
+        {site.social.map((s) => <li><a class="link-u" href={s.href} target="_blank" rel="noopener">{s.label}</a></li>)}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-pearl-50/10">
+    <div class="wrap flex flex-col gap-3 py-6 text-sm text-pearl-50/60 md:flex-row md:items-center md:justify-between">
+      <p>© {new Date().getFullYear()} {site.legal}. All rights reserved.</p>
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        <li><a class="link-u" href="#">Privacy Policy</a></li>
+        <li><a class="link-u" href="#">Terms and Conditions</a></li>
+        <li><a class="link-u" href="#">Accessibility Notice</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
