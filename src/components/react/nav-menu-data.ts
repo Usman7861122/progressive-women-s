@@ -1,95 +1,35 @@
 import type { ElementType } from 'react';
-import {
-  Activity, Baby, BadgeCheck, CalendarCheck, Dna, Droplets, FlaskConical, Flower2,
-  HeartPulse, Newspaper, Scale, Scan, ShieldCheck, Sparkles, Star, Stethoscope, Sun,
-  Video, Wallet, Waves, Receipt, GraduationCap, Brain, MessagesSquare, Mars,
-} from 'lucide-react';
-import { conditions, services, specialties } from '../../data/content';
+import { BadgeCheck, CalendarCheck, GraduationCap, Newspaper, Receipt, Star, Wallet, Stethoscope } from 'lucide-react';
+import { specialtyPages, type SpecialtyPage } from '../../data/specialty-pages';
 
 export type MenuItem = { label: string; description?: string; href: string; icon: ElementType };
 export type MenuGroup = { title: string; items: MenuItem[] };
-export type NavEntry = { id: number; label: string; href: string; menus?: MenuGroup[]; all?: { label: string; href: string } };
-
-const icons: Record<string, ElementType> = {
-  'pelvic-pain': Activity,
-  'ovarian-cysts': Waves,
-  'lichen-sclerosus': Flower2,
-  contraception: ShieldCheck,
-  'std-testing': FlaskConical,
-  hysteroscopy: Scan,
-  menopause: Sun,
-  'irregular-bleeding': Droplets,
-  telemedicine: Video,
-  'heavy-periods-menorrhagia': Droplets,
-  'postmenopausal-bleeding': Sun,
-  'polycystic-ovarian-syndrome-pcos': HeartPulse,
-  'irregular-periods': CalendarCheck,
-  'uterine-fibroids': Activity,
-  infertility: Baby,
-  'annual-exams': Stethoscope,
-  'pregnancy-testing-and-early-pregnancy-care': Baby,
-  'sexually-transmitted-infections': FlaskConical,
-  'genetic-testing': Dna,
-  'primary-care': Stethoscope,
-  'mens-health': Mars,
-  psychiatry: Brain,
-  counseling: MessagesSquare,
-  'pain-management': Video,
-  'weight-management': Scale,
-  aesthetics: Sparkles,
-  'medical-weight-loss': Scale,
+export type NavEntry = {
+  id: number;
+  label: string;
+  href: string;
+  menus?: MenuGroup[]; // simple dropdown, also used for the mobile list
+  all?: { label: string; href: string };
+  mega?: SpecialtyPage[]; // tabbed mega menu, shows each service page's exact wording
 };
 
-const chunk = <T,>(list: T[], size: number) =>
-  Array.from({ length: Math.ceil(list.length / size) }, (_, i) => list.slice(i * size, i * size + size));
-
-const serviceItems: MenuItem[] = services.map((s) => ({
-  label: s.name,
-  description: s.text,
-  href: `/services#${s.slug}`,
-  icon: icons[s.slug] ?? Sparkles,
+// Mobile list and fallback: one link per service, named exactly as in the navigation.
+const serviceLinks: MenuItem[] = specialtyPages.map((s) => ({
+  label: s.nav,
+  href: `/${s.slug}`,
+  icon: Stethoscope,
 }));
-const conditionItems: MenuItem[] = conditions.map((c) => ({
-  label: (c as { short?: string }).short ?? c.name,
-  href: `/conditions#${c.slug}`,
-  icon: icons[c.slug] ?? Sparkles,
-}));
-
-const specItem = (slug: string): MenuItem => {
-  const s = specialties.find((x) => x.slug === slug)!;
-  return { label: s.name, description: s.text, href: `/${s.slug}`, icon: icons[s.slug] ?? Sparkles };
-};
 
 export const navEntries: NavEntry[] = [
   {
     id: 1,
-    label: 'Gynecology',
+    label: 'Services',
     href: '/gynecology',
-    menus: [
-      { title: 'Everyday care', items: serviceItems.slice(0, 5) },
-      { title: 'Procedures and more', items: serviceItems.slice(5) },
-    ],
-    all: { label: 'View all gynecology services', href: '/gynecology' },
+    mega: specialtyPages,
+    menus: [{ title: 'Services', items: serviceLinks }],
   },
   {
     id: 2,
-    label: 'Conditions',
-    href: '/#conditions',
-    menus: chunk(conditionItems, 5).map((items, i) => ({ title: ['Cycles and bleeding', 'Ovaries and hormones', 'Screening and family'][i] ?? 'More', items })),
-    all: { label: 'View all conditions', href: '/conditions' },
-  },
-  {
-    id: 3,
-    label: 'Specialties',
-    href: '/#services',
-    menus: [
-      { title: 'Medical care', items: ['primary-care', 'mens-health', 'pain-management', 'weight-management'].map(specItem) },
-      { title: 'Mind and body', items: ['psychiatry', 'counseling', 'aesthetics'].map(specItem) },
-    ],
-    all: { label: 'See all our services', href: '/#services' },
-  },
-  {
-    id: 4,
     label: 'Patients',
     href: '/#first-visit',
     menus: [
@@ -112,7 +52,7 @@ export const navEntries: NavEntry[] = [
       },
     ],
   },
-  { id: 5, label: 'Shop', href: '/shop' },
-  { id: 6, label: 'Our Team', href: '/about' },
-  { id: 7, label: 'Contact', href: '/#contact' },
+  { id: 3, label: 'Shop', href: '/shop' },
+  { id: 4, label: 'Our Team', href: '/about' },
+  { id: 5, label: 'Contact', href: '/#contact' },
 ];

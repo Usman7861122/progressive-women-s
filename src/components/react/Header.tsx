@@ -3,6 +3,7 @@ import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { site } from '../../data/site';
 import { navEntries, type NavEntry } from './nav-menu-data';
+import ServicesMega from './ServicesMega';
 
 export default function Header({ overHero = false }: { overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -195,7 +196,7 @@ function DesktopItem({
   );
   return (
     <li
-      className="relative"
+      className={entry.mega ? 'static' : 'relative'}
       onMouseEnter={() => {
         onHover(true);
         onOpen();
@@ -223,6 +224,19 @@ function DesktopItem({
 
       <AnimatePresence>
         {isOpen && entry.menus && (
+          entry.mega ? (
+            <div className="absolute inset-x-0 top-full flex justify-center px-4 pt-2">
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 4 }}
+                transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
+                className="w-full max-w-[72rem]"
+              >
+                <ServicesMega pages={entry.mega} onClose={onClose} />
+              </motion.div>
+            </div>
+          ) : (
           <div className="absolute left-0 top-full pt-3">
             <motion.div
               initial={{ opacity: 0, y: 8, scale: 0.98 }}
@@ -269,6 +283,7 @@ function DesktopItem({
               )}
             </motion.div>
           </div>
+          )
         )}
       </AnimatePresence>
     </li>
