@@ -3,8 +3,8 @@
 import { IMG } from './images';
 import type { ConditionPage } from './condition-pages';
 
-const WELCOME = 'Patients are welcome from across Friendswood, Pearland, League City, Webster, Clear Lake and the greater Bay Area.';
-const TELE = 'Our Kenner, LA office is also available for telemedicine.';
+export const WELCOME = 'Patients are welcome from across Friendswood, Pearland, League City, Webster, Clear Lake and the greater Bay Area.';
+export const TELE = 'Our Kenner, LA office is also available for telemedicine.';
 
 const AREAS = [
   { city: 'Pearland', time: 'about 15 minutes' },
@@ -17,7 +17,7 @@ const AREAS = [
   { city: 'Downtown Houston', time: 'about 35 minutes' },
 ];
 
-const near = (what: string): ConditionPage['near'] => ({
+export const near = (what: string): ConditionPage['near'] => ({
   intro: `Dr. Asia Mohsin provides ${what} care at our Friendswood office and by telehealth. We welcome patients from across the Bay Area and south Houston.`,
   cities: ['Friendswood', 'Pearland', 'League City', 'Webster', 'Clear Lake', 'Alvin', 'Dickinson', 'Pasadena', 'Sugar Land', 'Houston'],
   closing: 'Not on the list? Call us, or ask about a telehealth visit.',
