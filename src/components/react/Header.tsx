@@ -70,9 +70,9 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
           <div className="flex items-center justify-end gap-3">
             <a
               href={site.bookingUrl}
-              className="shiny shiny-sm hidden sm:inline-flex"
+              className="shiny hidden sm:inline-flex"
             >
-              <span>Book a telemedicine visit</span>
+              <span>Book Telemedicine</span>
             </a>
             <button
               type="button"
@@ -156,7 +156,7 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
               ))}
             </nav>
             <a href={site.bookingUrl} onClick={() => setOpen(false)} className="shiny mt-10 self-start">
-              <span>Book a telemedicine visit</span>
+              <span>Book Telemedicine</span>
             </a>
             <a href="/pay-bill" onClick={() => setOpen(false)} className="mt-6 text-orchid-200 underline underline-offset-4">
               Pay my bill

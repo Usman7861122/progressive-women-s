@@ -105,7 +105,7 @@ export default function ContactForm({ phone }: { phone: string }) {
 
             <div>
               <button type="submit" disabled={status === 'sending'} className="shiny disabled:opacity-60">
-                <span>{status === 'sending' ? 'Sending…' : 'Request a telemedicine visit'}</span>
+                <span>{status === 'sending' ? 'Sending…' : 'Book Telemedicine'}</span>
               </button>
               {status === 'error' && (
                 <p role="alert" className="mt-4 text-sm text-orchid-700">
