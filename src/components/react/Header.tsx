@@ -39,7 +39,7 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
           open ? 'bg-plum-950 text-pearl-50' : clear ? 'bg-transparent text-pearl-50' : 'bg-pearl-50/92 text-ink shadow-[0_1px_0_var(--color-pearl-200)] backdrop-blur-md'
         }`}
       >
-        <div className="wrap flex items-center justify-between py-3">
+        <div className="wrap flex items-center justify-between gap-6 py-3 xl:grid xl:grid-cols-[auto_1fr_auto]">
           <a href="/" aria-label={`${site.name} home`} className="shrink-0">
             <img
               src="/images/logo.png"
@@ -50,7 +50,7 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
             />
           </a>
 
-          <nav className="hidden items-center lg:flex" aria-label="Main" onMouseLeave={() => setOpenMenu(null)}>
+          <nav className="hidden items-center justify-center xl:flex" aria-label="Main" onMouseLeave={() => setOpenMenu(null)}>
             <ul className="flex items-center">
               {navEntries.map((n) => (
                 <DesktopItem
@@ -66,10 +66,7 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-3">
-            <a href={`tel:${site.phoneInfo}`} className="hidden whitespace-nowrap text-sm font-medium 2xl:inline">
-              Call {site.phoneInfo}
-            </a>
+          <div className="flex items-center justify-end gap-3">
             <a
               href={site.bookingUrl}
               className={`btn hidden whitespace-nowrap !px-5 !py-2.5 !text-[0.8rem] sm:inline-flex ${clear ? 'btn-light' : 'btn-solid'}`}
@@ -78,7 +75,7 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
             </a>
             <button
               type="button"
-              className="grid h-11 w-11 place-items-center lg:hidden"
+              className="grid h-11 w-11 place-items-center xl:hidden"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -211,14 +208,14 @@ function DesktopItem({
           aria-haspopup="true"
           aria-expanded={isOpen}
           onClick={() => (isOpen ? onClose() : onOpen())}
-          className="group relative flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium"
+          className="group relative flex items-center gap-1 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium"
         >
           {pill}
           {entry.label}
           <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
       ) : (
-        <a href={entry.href} className="relative flex items-center rounded-full px-4 py-2 text-sm font-medium">
+        <a href={entry.href} className="relative flex items-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium">
           {pill}
           {entry.label}
         </a>
