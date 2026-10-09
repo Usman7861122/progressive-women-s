@@ -58,18 +58,23 @@ export default function ServicesMega({ pages, onClose }: { pages: SpecialtyPage[
         <div className="gap-x-8 [column-fill:balance] lg:columns-3">
           {sections.map((s) => (
             <section key={s.title} className="mb-6 break-inside-avoid">
-              <h3 className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-                <a href={link(slugify(s.title))} onClick={onClose} className="hover:text-orchid-700">{s.title}</a>
+              <h3 className="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-orchid-700">
+                <a href={link(slugify(s.title))} onClick={onClose} className="hover:text-plum-900">{s.title}</a>
               </h3>
               <ul className="space-y-1">
                 {s.items.map((i) => (
                   <li key={i.label} className="text-[0.82rem] leading-snug text-plum-900">
-                    <a href={link(slugify(s.title))} onClick={onClose} className="block rounded-md px-2 py-1 -mx-2 transition-colors duration-200 hover:bg-orchid-600/10 hover:text-orchid-700">
+                    <a href={link(slugify(s.title))} onClick={onClose} className="flex items-start gap-2.5 rounded-md px-2 py-1 -mx-2 transition-colors duration-200 hover:bg-orchid-600/10 hover:text-orchid-700">
+                      <span className="mt-[0.45rem] size-1 shrink-0 rounded-full bg-orchid-600" aria-hidden="true" />
                       {i.label}
                     </a>
                     {i.sub && (
-                      <ul className="ml-3 border-l border-pearl-200 pl-3 text-muted">
-                        {i.sub.map((x) => <li key={x} className="py-0.5">{x}</li>)}
+                      <ul className="ml-4 space-y-0.5 pb-1 text-muted">
+                        {i.sub.map((x) => (
+                          <li key={x} className="flex items-start gap-2.5 py-0.5">
+                            <span className="mt-[0.45rem] size-1 shrink-0 rounded-full bg-champagne" aria-hidden="true" />{x}
+                          </li>
+                        ))}
                       </ul>
                     )}
                   </li>
