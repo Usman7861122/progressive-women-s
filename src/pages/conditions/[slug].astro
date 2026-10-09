@@ -42,7 +42,7 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
         </p>
       </div>
       <div class="mt-8 flex flex-wrap gap-4">
-        <a href={site.bookingUrl} class="btn btn-light">Request a visit</a>
+        <a href={site.bookingUrl} class="shiny"><span>Book a telemedicine visit</span></a>
         <a href={`tel:${site.phoneBook}`} class="btn btn-line">Call {site.phoneBook}</a>
       </div>
     </div>
@@ -57,7 +57,7 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
           {c.overview.paragraphs.map((p) => <p>{p}</p>)}
         </div>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href={site.bookingUrl} class="btn btn-solid">Request a visit</a>
+          <a href={site.bookingUrl} class="shiny"><span>Book a telemedicine visit</span></a>
           <a href={`tel:${site.phoneBook}`} class="btn btn-line text-plum-900">Call us</a>
         </div>
       </div>
@@ -102,7 +102,7 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Near you</p>
         <h2 class={`${h3} mt-4`}>{c.name} care in Friendswood and nearby cities</h2>
         <p class="lede mt-6">{c.near.intro}</p>
-        <a href={site.bookingUrl} class="btn btn-light mt-8">Request a visit</a>
+        <a href={site.bookingUrl} class="shiny mt-8"><span>Book a telemedicine visit</span></a>
 
         <h3 class="mt-12 text-sm font-semibold uppercase tracking-[0.16em] text-orchid-200">Patients come to us from</h3>
         <ul class="mt-4 flex flex-wrap gap-2.5">
@@ -236,7 +236,7 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
       <h2 class="font-display text-4xl font-light md:text-6xl">Ready when you are.</h2>
       <p class="lede mx-auto mt-5">Tell us how you are feeling, and we will help you find a plan.</p>
       <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <a href={site.bookingUrl} class="btn btn-light">Request a visit</a>
+        <a href={site.bookingUrl} class="shiny"><span>Book a telemedicine visit</span></a>
         <a href={`tel:${site.phoneBook}`} class="btn btn-line">Call {site.phoneBook}</a>
       </div>
     </div>

@@ -45,7 +45,7 @@ export default function Hero({ image, phone, rating, reviews }: Props) {
             transition={{ duration: 1, delay: 2.5 }}
             className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <a href="/#contact" className="btn btn-light">Book an appointment</a>
+            <a href="/#contact" className="shiny"><span>Book a telemedicine visit</span></a>
             <a href={`tel:${phone}`} className="btn btn-line">Call {phone}</a>
           </motion.div>
 

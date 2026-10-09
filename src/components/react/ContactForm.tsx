@@ -82,9 +82,9 @@ export default function ContactForm({ phone }: { phone: string }) {
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="f-type" className={label}>Visit type</label>
-                <select id="f-type" name="visit" className={field} defaultValue="in-person">
+                <select id="f-type" name="visit" className={field} defaultValue="virtual">
+                  <option value="virtual">Telemedicine (video) visit</option>
                   <option value="in-person">In-person visit</option>
-                  <option value="virtual">Virtual visit</option>
                   <option value="second-opinion">Second opinion</option>
                 </select>
               </div>
@@ -104,8 +104,8 @@ export default function ContactForm({ phone }: { phone: string }) {
             </div>
 
             <div>
-              <button type="submit" disabled={status === 'sending'} className="btn btn-solid disabled:opacity-60">
-                {status === 'sending' ? 'Sending…' : 'Request appointment'}
+              <button type="submit" disabled={status === 'sending'} className="shiny disabled:opacity-60">
+                <span>{status === 'sending' ? 'Sending…' : 'Request a telemedicine visit'}</span>
               </button>
               {status === 'error' && (
                 <p role="alert" className="mt-4 text-sm text-orchid-700">

@@ -70,9 +70,9 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
           <div className="flex items-center justify-end gap-3">
             <a
               href={site.bookingUrl}
-              className={`btn hidden whitespace-nowrap !px-5 !py-2.5 !text-[0.8rem] sm:inline-flex ${clear ? 'btn-light' : 'btn-solid'}`}
+              className="shiny shiny-sm hidden sm:inline-flex"
             >
-              Request an appointment
+              <span>Book a telemedicine visit</span>
             </a>
             <button
               type="button"
@@ -155,8 +155,8 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
                 </motion.div>
               ))}
             </nav>
-            <a href={site.bookingUrl} onClick={() => setOpen(false)} className="btn btn-light mt-10 self-start">
-              Request an appointment
+            <a href={site.bookingUrl} onClick={() => setOpen(false)} className="shiny mt-10 self-start">
+              <span>Book a telemedicine visit</span>
             </a>
             <a href="/pay-bill" onClick={() => setOpen(false)} className="mt-6 text-orchid-200 underline underline-offset-4">
               Pay my bill

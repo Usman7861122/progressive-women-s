@@ -108,7 +108,7 @@ export const conditionPages: ConditionPage[] = [
       { title: 'A plan that is yours', text: 'Options with and without hormones, chosen with you.' },
     ],
     steps: [
-      { title: 'Request a visit', text: 'Send a request and our team will call you to schedule.' },
+      { title: 'Request a telemedicine visit', text: 'Send a request and our team will call you to schedule your video visit.' },
       { title: 'Talk and review', text: 'We review your symptoms, health history and goals, and order tests only if they help.' },
       { title: 'Start and follow up', text: 'We start your plan, then check in to see how you feel and adjust.' },
     ],
