@@ -1,0 +1,36 @@
+---
+interface Props {
+  id?: string;
+  title: string;
+  excerpt: string;
+  img: string;
+  items: { label: string; href: string; sub?: string[] }[];
+}
+const { id, title, excerpt, img, items } = Astro.props;
+---
+
+<li id={id} class="group relative aspect-[4/5] scroll-mt-28 overflow-hidden rounded-2xl bg-plum-900 text-pearl-50 outline-offset-4 focus-within:ring-2 focus-within:ring-orchid-300" tabindex="0">
+  <img src={img} alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 group-focus-within:scale-105" />
+  <div class="absolute inset-0 bg-gradient-to-t from-plum-950/92 via-plum-950/35 to-plum-950/10"></div>
+
+  <!-- Front: title and excerpt -->
+  <div class="absolute inset-x-0 bottom-0 p-7 transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+    <h3 class="font-display text-[1.9rem] font-light leading-tight">{title}</h3>
+    <p class="mt-3 text-[0.92rem] leading-relaxed text-pearl-50/85">{excerpt}</p>
+    <p class="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-champagne">Hover to see more</p>
+  </div>
+
+  <!-- Hover: clickable bullet points -->
+  <div class="absolute inset-0 flex translate-y-4 flex-col bg-plum-950/90 p-7 opacity-0 backdrop-blur-[2px] transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+    <h3 class="font-display text-2xl leading-tight text-orchid-200">{title}</h3>
+    <ul class="mt-4 space-y-1 overflow-y-auto pr-1 text-[0.88rem] leading-snug">
+      {items.map((i) => (
+        <li>
+          <a href={i.href} class="-mx-2 flex items-start gap-2.5 rounded-md px-2 py-1.5 transition-colors duration-200 hover:bg-pearl-50/12 hover:text-orchid-200">
+            <span class="mt-[0.45rem] size-1.5 shrink-0 rounded-full bg-champagne" aria-hidden="true"></span>{i.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</li>

@@ -3,7 +3,7 @@
 import { IMG } from './images';
 
 export type Item = string | { text: string; sub: string[] };
-export type Group = { title: string; items: Item[] };
+export type Group = { title: string; items: Item[]; excerpt?: string; img?: string };
 export type Card = { title: string; text: string };
 
 export type SpecialtyPage = {
@@ -37,12 +37,12 @@ export const specialtyPages: SpecialtyPage[] = [
     intro: 'A primary care home for check-ups, new symptoms, and long-term conditions, coordinated with our specialty services. Visits are currently by telemedicine.',
     cta: 'Request a primary care visit',
     groups: [
-      { title: 'Preventive care & wellness', items: ['Annual physical examinations', 'Age-appropriate cancer & health screenings', 'Immunization review & recommendations', 'Cardiovascular risk assessment', 'Tobacco cessation', 'Preoperative medical evaluations'] },
-      { title: 'Chronic disease management', items: ['Hypertension (high blood pressure)', 'Type 2 diabetes mellitus & prediabetes', 'Hyperlipidemia (high cholesterol)', 'Hypothyroidism & other thyroid disorders', 'Asthma', 'Gastroesophageal reflux disease (GERD)', 'Osteopenia & osteoporosis'] },
-      { title: 'Acute & minor illness', items: ['Upper respiratory infections (common cold)', 'Acute sinusitis', 'Pharyngitis (sore throat)', 'Influenza & COVID-19', 'Acute bronchitis', 'Uncomplicated urinary tract infections', 'Allergic rhinitis (seasonal allergies)', 'Acute gastroenteritis'] },
-      { title: 'Skin conditions', items: ['Atopic & contact dermatitis (eczema)', 'Fungal skin infections', 'Mild skin infections (cellulitis, impetigo)', 'Conjunctivitis (pink eye)', 'Insect bites & minor rashes'] },
-      { title: 'Common symptoms & musculoskeletal concerns', items: ['Headaches & migraine', 'Acute & chronic low back pain', 'Joint pain & osteoarthritis', 'Fatigue evaluation', 'Iron-deficiency anemia', 'Vitamin D & B12 deficiency', 'Insomnia & sleep concerns'] },
-      { title: 'Behavioral health screening & care coordination', items: ['Depression & anxiety screening', 'Alcohol use screening', 'Medication reconciliation & refills', 'Lab ordering & result review', 'Specialist referrals & care coordination', 'Telehealth follow-up visits'] },
+      { title: 'Preventive care & wellness', excerpt: 'Yearly exams, screenings and vaccines that keep small things from becoming big ones.', img: IMG.doctor, items: ['Annual physical examinations', 'Age-appropriate cancer & health screenings', 'Immunization review & recommendations', 'Cardiovascular risk assessment', 'Tobacco cessation', 'Preoperative medical evaluations'] },
+      { title: 'Chronic disease management', excerpt: 'Steady, long-term care for blood pressure, diabetes, thyroid and more.', img: IMG.elderConsult, items: ['Hypertension (high blood pressure)', 'Type 2 diabetes mellitus & prediabetes', 'Hyperlipidemia (high cholesterol)', 'Hypothyroidism & other thyroid disorders', 'Asthma', 'Gastroesophageal reflux disease (GERD)', 'Osteopenia & osteoporosis'] },
+      { title: 'Acute & minor illness', excerpt: 'Fast help for colds, infections and sudden symptoms, from home.', img: IMG.lab, items: ['Upper respiratory infections (common cold)', 'Acute sinusitis', 'Pharyngitis (sore throat)', 'Influenza & COVID-19', 'Acute bronchitis', 'Uncomplicated urinary tract infections', 'Allergic rhinitis (seasonal allergies)', 'Acute gastroenteritis'] },
+      { title: 'Skin conditions', excerpt: 'Rashes, eczema and common skin infections, looked at and treated.', img: IMG.portraitC, items: ['Atopic & contact dermatitis (eczema)', 'Fungal skin infections', 'Mild skin infections (cellulitis, impetigo)', 'Conjunctivitis (pink eye)', 'Insect bites & minor rashes'] },
+      { title: 'Common symptoms & musculoskeletal concerns', excerpt: 'Headaches, aches, tiredness and sleep trouble, explained and treated.', img: IMG.workout, items: ['Headaches & migraine', 'Acute & chronic low back pain', 'Joint pain & osteoarthritis', 'Fatigue evaluation', 'Iron-deficiency anemia', 'Vitamin D & B12 deficiency', 'Insomnia & sleep concerns'] },
+      { title: 'Behavioral health screening & care coordination', excerpt: 'Mood checks, refills, labs and referrals, all kept in one place.', img: IMG.calm, items: ['Depression & anxiety screening', 'Alcohol use screening', 'Medication reconciliation & refills', 'Lab ordering & result review', 'Specialist referrals & care coordination', 'Telehealth follow-up visits'] },
     ],
     barLeft: INS, barRight: 'Telemedicine visits',
     notice: 'Primary care services are for adults 18 and older. Our Louisiana practice currently provides care by telemedicine only, and you must be physically located in Louisiana at the time of each visit. Some conditions need an in-person exam, testing, or urgent care; if so, we will help you arrange it. In-person exams and vaccinations will be available once our Kenner office opens. Telemedicine is not for emergencies: for chest pain, trouble breathing, stroke symptoms, or other emergencies, call 911.',

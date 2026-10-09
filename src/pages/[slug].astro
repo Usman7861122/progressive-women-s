@@ -3,11 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { specialtyPages, slugify } from '../data/specialty-pages';
 import { photo } from '../data/images';
 import { site } from '../data/site';
+import CategoryCard from '../components/ui/CategoryCard.astro';
 
 export function getStaticPaths() {
   return specialtyPages.map((s) => ({ params: { slug: s.slug }, props: { s } }));
 }
 const { s } = Astro.props;
+const cardLayout = !!s.groups?.length && s.groups.every((g) => g.excerpt);
+const flat = (i: any) => (typeof i === 'string' ? i : i.text);
 const others = specialtyPages.filter((o) => o.slug !== s.slug);
 ---
 
@@ -50,7 +53,21 @@ const others = specialtyPages.filter((o) => o.slug !== s.slug);
         </div>
       )}
 
-      {s.groups && (
+      {cardLayout && (
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {s.groups!.map((g) => (
+            <CategoryCard
+              id={slugify(g.title)}
+              title={g.title}
+              excerpt={g.excerpt!}
+              img={photo(g.img!, 900, 1100)}
+              items={g.items.map((i) => ({ label: flat(i), href: `/?topic=${encodeURIComponent(flat(i))}#contact` }))}
+            />
+          ))}
+        </ul>
+      )}
+
+      {s.groups && !cardLayout && (
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {s.groups.map((g) => (
             <section id={slugify(g.title)} class="scroll-mt-28 rounded-xl border border-pearl-200 bg-pearl-100 p-6">
