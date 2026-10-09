@@ -10,6 +10,7 @@ export function getStaticPaths() {
 }
 const { s } = Astro.props;
 const cardLayout = !!s.groups?.length && s.groups.every((g) => g.excerpt);
+const cardsWithImg = !!s.cards && s.cards.items.every((c) => c.img);
 const flat = (i: any) => (typeof i === 'string' ? i : i.text);
 const others = specialtyPages.filter((o) => o.slug !== s.slug);
 ---
@@ -39,7 +40,25 @@ const others = specialtyPages.filter((o) => o.slug !== s.slug);
 
   <section class="section bg-pearl-50">
     <div class="wrap space-y-16">
-      {s.cards && (
+      {cardsWithImg && (
+        <div id={slugify(s.cards!.title)} class="scroll-mt-28">
+          <h2 class="h2 text-plum-900">{s.cards!.title}</h2>
+          <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {s.cards!.items.map((c) => (
+              <CategoryCard
+                id={slugify(c.title)}
+                title={c.title}
+                excerpt={c.text}
+                detail={c.text}
+                img={photo(c.img!, 900, 1100)}
+                items={[{ label: s.cta, href: `/?topic=${encodeURIComponent(c.title)}#contact` }]}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {s.cards && !cardsWithImg && (
         <div>
           <h2 class="h2 text-plum-900" id={slugify(s.cards.title)}>{s.cards.title}</h2>
           <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

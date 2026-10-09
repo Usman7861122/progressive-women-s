@@ -11,8 +11,8 @@ export default function ServicesMega({ pages, onClose }: { pages: SpecialtyPage[
   const p = pages.find((x) => x.slug === active) ?? pages[0];
   const link = (hash?: string) => `/${p.slug}${hash ? `#${hash}` : ''}`;
 
-  const sections: { title: string; items: { label: string; sub?: string[] }[]; chips?: boolean }[] = [];
-  if (p.cards) sections.push({ title: p.cards.title, items: p.cards.items.map((c) => ({ label: c.title })) });
+  const sections: { title: string; items: { label: string; sub?: string[]; anchor?: string }[]; chips?: boolean }[] = [];
+  if (p.cards) sections.push({ title: p.cards.title, items: p.cards.items.map((c) => ({ label: c.title, anchor: p.cards!.items.every((x) => x.img) ? slugify(c.title) : undefined })) });
   (p.groups ?? []).forEach((g) =>
     sections.push({
       title: g.title,
@@ -64,7 +64,7 @@ export default function ServicesMega({ pages, onClose }: { pages: SpecialtyPage[
               <ul className="space-y-1">
                 {s.items.map((i) => (
                   <li key={i.label} className="text-[0.82rem] leading-snug text-plum-900">
-                    <a href={link(slugify(s.title))} onClick={onClose} className="flex items-start gap-2.5 rounded-md px-2 py-1 -mx-2 transition-colors duration-200 hover:bg-orchid-600/10 hover:text-orchid-700">
+                    <a href={link(i.anchor ?? slugify(s.title))} onClick={onClose} className="flex items-start gap-2.5 rounded-md px-2 py-1 -mx-2 transition-colors duration-200 hover:bg-orchid-600/10 hover:text-orchid-700">
                       <span className="mt-[0.45rem] size-1 shrink-0 rounded-full bg-orchid-600" aria-hidden="true" />
                       {i.label}
                     </a>
