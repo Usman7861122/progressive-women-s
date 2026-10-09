@@ -1,0 +1,11 @@
+---
+import ConditionLayout from '../../components/sections/ConditionLayout.astro';
+import { serviceItemPages } from '../../data/service-items';
+
+export function getStaticPaths() {
+  return serviceItemPages.map((c) => ({ params: { item: c.slug }, props: { c } }));
+}
+const { c } = Astro.props;
+---
+
+<ConditionLayout c={c} />

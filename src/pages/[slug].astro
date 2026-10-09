@@ -4,6 +4,7 @@ import { specialtyPages, slugify } from '../data/specialty-pages';
 import { photo } from '../data/images';
 import { site } from '../data/site';
 import CategoryCard from '../components/ui/CategoryCard.astro';
+import { detailLinks } from '../data/detail-links';
 import NearYou from '../components/sections/NearYou.astro';
 import { near as buildNear, WELCOME, TELE } from '../data/condition-more';
 
@@ -101,7 +102,7 @@ const others = specialtyPages.filter((o) => o.slug !== s.slug);
               title={g.title}
               excerpt={g.excerpt!}
               img={photo(g.img!, 900, 1100)}
-              items={g.items.map((i) => ({ label: flat(i), href: `/?topic=${encodeURIComponent(flat(i))}#contact` }))}
+              items={g.items.map((i) => ({ label: flat(i), href: detailLinks[flat(i)] ?? `/?topic=${encodeURIComponent(flat(i))}#contact` }))}
             />
           ))}
         </ul>

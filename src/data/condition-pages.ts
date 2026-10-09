@@ -9,6 +9,10 @@ export type Area = { city: string; time: string };
 
 export type ConditionPage = {
   slug: string;
+  kicker?: string; // label before the city pill, default "Condition"
+  parent?: { label: string; href: string }; // breadcrumb parent, default Conditions
+  nearHeading?: string;
+  benefitsHeading?: string;
   name: string;
   title: string; // H1
   summary: string;

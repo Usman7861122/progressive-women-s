@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { detailLinks } from '../../data/detail-links';
 import { slugify, type Item, type SpecialtyPage } from '../../data/specialty-pages';
 
 const text = (i: Item) => (typeof i === 'string' ? i : i.text);
@@ -64,7 +65,7 @@ export default function ServicesMega({ pages, onClose }: { pages: SpecialtyPage[
               <ul className="space-y-1">
                 {s.items.map((i) => (
                   <li key={i.label} className="text-[0.82rem] leading-snug text-plum-900">
-                    <a href={link(i.anchor ?? slugify(s.title))} onClick={onClose} className="flex items-start gap-2.5 rounded-md px-2 py-1 -mx-2 transition-colors duration-200 hover:bg-orchid-600/10 hover:text-orchid-700">
+                    <a href={detailLinks[i.label] ?? link(i.anchor ?? slugify(s.title))} onClick={onClose} className="flex items-start gap-2.5 rounded-md px-2 py-1 -mx-2 transition-colors duration-200 hover:bg-orchid-600/10 hover:text-orchid-700">
                       <span className="mt-[0.45rem] size-1 shrink-0 rounded-full bg-orchid-600" aria-hidden="true" />
                       {i.label}
                     </a>

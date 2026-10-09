@@ -61,7 +61,7 @@ const R = {
 const rel = (...k: (keyof typeof R)[]) => k.map((x) => R[x]);
 
 type Input = Omit<ConditionPage, 'welcome' | 'telemedicine' | 'near' | 'steps' | 'notice'> & { what: string; steps?: ConditionPage['steps']; notice?: string };
-const make = ({ what, steps, notice, ...c }: Input): ConditionPage => ({
+export const make = ({ what, steps, notice, ...c }: Input): ConditionPage => ({
   ...c,
   welcome: WELCOME,
   telemedicine: TELE,
