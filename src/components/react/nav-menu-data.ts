@@ -1,6 +1,7 @@
 import type { ElementType } from 'react';
-import { BadgeCheck, CalendarCheck, GraduationCap, Newspaper, Receipt, Star, Wallet, Stethoscope } from 'lucide-react';
+import { MapPin, BadgeCheck, CalendarCheck, GraduationCap, Newspaper, Receipt, Star, Wallet, Stethoscope } from 'lucide-react';
 import { specialtyPages, type SpecialtyPage } from '../../data/specialty-pages';
+import { locationPages } from '../../data/locations';
 
 export type MenuItem = { label: string; description?: string; href: string; icon: ElementType };
 export type MenuGroup = { title: string; items: MenuItem[] };
@@ -11,6 +12,7 @@ export type NavEntry = {
   menus?: MenuGroup[]; // simple dropdown, also used for the mobile list
   all?: { label: string; href: string };
   mega?: SpecialtyPage[]; // tabbed mega menu, shows each service page's exact wording
+  locations?: boolean; // locations mega menu
 };
 
 // Mobile list and fallback: one link per service, named exactly as in the navigation.
@@ -51,6 +53,14 @@ export const navEntries: NavEntry[] = [
         ],
       },
     ],
+  },
+  {
+    id: 6,
+    label: 'Locations',
+    href: '/locations',
+    locations: true,
+    menus: [{ title: 'Locations', items: locationPages.map((l) => ({ label: l.name + (l.telemedicineOnly ? ' (telemedicine)' : ''), href: `/locations/${l.slug}`, icon: MapPin })) }],
+    all: { label: 'All locations', href: '/locations' },
   },
   { id: 3, label: 'Shop', href: '/shop' },
   { id: 4, label: 'Our Team', href: '/about' },

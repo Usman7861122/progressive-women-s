@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locationPages } from '../../data/locations';
+import { photo } from '../../data/images';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return locationPages.map((l) => ({ params: { slug: l.slug }, props: { l } }));
+}
+const { l } = Astro.props;
+const other = locationPages.find((x) => x.slug !== l.slug)!;
+const q = encodeURIComponent(l.mapQuery);
+const dest = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
+const dirFrom = (city: string) => `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(city.split(' / ')[0] + ', TX')}&destination=${q}`;
+const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
+---
+
+<BaseLayout title={l.title} description={l.summary}>
+  <!-- Hero -->
+  <section class="relative isolate overflow-hidden bg-plum-950 pb-20 pt-40 text-pearl-50 md:pb-28 md:pt-48">
+    <img src={photo(l.img, 2000)} alt="" class="absolute inset-0 -z-20 h-full w-full object-cover opacity-35" />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-plum-950 via-plum-950/70 to-plum-950/30" aria-hidden="true"></div>
+    <div class="wrap max-w-4xl">
+      <nav aria-label="Breadcrumb" class="text-sm text-pearl-50/60">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="hover:text-pearl-50">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/locations" class="hover:text-pearl-50">Locations</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-champagne">{l.name}</li>
+        </ol>
+      </nav>
+      <p class="mt-10 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-champagne">
+        Our office ·
+        <span class="rounded-full border border-champagne/50 px-4 py-2 text-sm font-normal normal-case tracking-normal text-pearl-50">{l.name}</span>
+        <span class:list={['rounded-full px-4 py-2 text-sm font-medium normal-case tracking-normal', l.telemedicineOnly ? 'bg-orchid-600 text-white' : 'bg-pearl-50/15 text-pearl-50']}>{l.badge}</span>
+      </p>
+      <h1 class="mt-5 font-display text-4xl font-light leading-[1.08] md:text-6xl">{l.title}</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pearl-50/85">{l.summary}</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href={site.bookingUrl} class="shiny"><span>Book Telemedicine</span></a>
+        <a href={`tel:${l.phone}`} class="btn btn-line">Call {l.phone}</a>
+        <a href={dest} target="_blank" rel="noopener" class="btn btn-line">Get directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key details -->
+  <section class="bg-pearl-50 py-16 md:py-24">
+    <div class="wrap grid gap-6 lg:grid-cols-12">
+      <div class="grid gap-6 sm:grid-cols-2 lg:col-span-7">
+        <div class="rounded-2xl border border-pearl-200 bg-pearl-100 p-7">
+          <h2 class="font-display text-2xl text-plum-900">{l.telemedicineOnly ? 'Office address' : 'Address'}</h2>
+          <p class="mt-3 leading-relaxed text-ink">{l.lines[0]}<br />{l.lines[1]}</p>
+          {l.telemedicineOnly && <p class="mt-3 rounded-lg bg-pearl-50 p-3 text-sm text-muted">Telemedicine only for now. Please do not visit in person yet.</p>}
+        </div>
+        <div class="rounded-2xl border border-pearl-200 bg-pearl-100 p-7">
+          <h2 class="font-display text-2xl text-plum-900">Contact</h2>
+          <p class="mt-3 leading-relaxed text-ink">
+            <a href={`tel:${l.phone}`} class="link-u">{l.phone}</a><br />
+            <a href={`mailto:${l.email}`} class="link-u break-all text-sm">{l.email}</a>
+          </p>
+        </div>
+        <div class="rounded-2xl border border-pearl-200 bg-pearl-100 p-7 sm:col-span-2">
+          <h2 class="font-display text-2xl text-plum-900">Hours</h2>
+          <dl class="mt-3 divide-y divide-pearl-200">
+            {l.hours.map((h) => (
+              <div class="flex justify-between gap-4 py-2 text-ink"><dt>{h.days}</dt><dd class="text-muted">{h.time}</dd></div>
+            ))}
+          </dl>
+          <p class="mt-3 text-sm text-muted">{l.hoursNote}</p>
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-2xl border border-pearl-200 bg-pearl-200 lg:col-span-5">
+        <iframe
+          title={`Map of Progressive Women's Health in ${l.name}`}
+          src={`https://www.google.com/maps?q=${q}&output=embed`}
+          class="h-full min-h-[22rem] w-full border-0 [filter:grayscale(.35)_contrast(1.05)]"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="bg-pearl-100 py-16 md:py-24">
+    <div class="wrap">
+      <h2 class={h3}>Care you can request here</h2>
+      <p class="lede mt-5">{l.telemedicineOnly ? 'All of our services are offered by telemedicine for patients in Louisiana.' : 'All of our services are offered at this office, and many by telemedicine as well.'}</p>
+      <ul class="mt-8 flex flex-wrap gap-3">
+        {l.services.map((s) => (
+          <li><a href={s.href} class="inline-flex rounded-full border border-pearl-200 bg-pearl-50 px-5 py-2.5 text-sm font-medium text-plum-900 transition-colors hover:border-orchid-600 hover:bg-orchid-600 hover:text-pearl-50">{s.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Getting here / how it works -->
+  <section id="getting-here" class="section on-dark bg-plum-900 text-pearl-50">
+    <div class="wrap grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Near you</p>
+        <h2 class={`${h3} mt-4`}>{l.guide.title}</h2>
+        <p class="lede mt-6">{l.guide.intro}</p>
+        <h3 class="mt-10 text-sm font-semibold uppercase tracking-[0.16em] text-orchid-200">Patients come to us from</h3>
+        <ul class="mt-4 flex flex-wrap gap-2.5">
+          {l.cities.map((x) => <li class="rounded-full border border-pearl-50/25 px-4 py-1.5 text-sm">{x}</li>)}
+        </ul>
+        <ul class="mt-8 space-y-2.5 text-sm text-pearl-50/80">
+          {l.guide.tips.map((t) => (
+            <li class="flex gap-3"><span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-champagne" aria-hidden="true"></span>{t}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="lg:col-span-6">
+        <div class="rounded-3xl bg-pearl-50 p-8 text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] md:p-10">
+          {l.guide.areas ? (
+            <>
+              <h3 class="font-display text-3xl text-plum-900">Drive times to our office</h3>
+              <ul class="mt-6 divide-y divide-pearl-200 border-y border-pearl-200">
+                {l.guide.areas.map((a) => (
+                  <li class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3 text-sm">
+                    <span class="font-medium text-plum-900">From {a.city}</span>
+                    <span class="flex items-center gap-4">
+                      <span class="text-muted">{a.time}</span>
+                      <a href={dirFrom(a.city)} target="_blank" rel="noopener" class="link-u font-medium text-orchid-700">Get directions →</a>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <>
+              <h3 class="font-display text-3xl text-plum-900">Three simple steps</h3>
+              <ol class="mt-6 space-y-6">
+                {l.guide.steps!.map((s, i) => (
+                  <li class="flex gap-4">
+                    <span class="grid size-10 shrink-0 place-items-center rounded-full bg-orchid-600 font-semibold text-white">{i + 1}</span>
+                    <div>
+                      <h4 class="font-display text-2xl text-plum-900">{s.title}</h4>
+                      <p class="mt-1 text-muted">{s.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
+          <a href={site.bookingUrl} class="shiny mt-8"><span>Book Telemedicine</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to bring + FAQ -->
+  <section class="section bg-pearl-50">
+    <div class="wrap grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h2 class={h3}>{l.telemedicineOnly ? 'What you need' : 'What to bring'}</h2>
+        <ul class="mt-6 space-y-3">
+          {l.bring.map((b) => (
+            <li class="flex gap-3 text-ink"><span class="mt-2 size-1.5 shrink-0 rounded-full bg-orchid-600" aria-hidden="true"></span>{b}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="lg:col-span-8">
+        <h2 class={h3}>Questions we hear</h2>
+        <div class="mt-6 divide-y divide-pearl-200 border-y border-pearl-200">
+          {l.faq.map((f) => (
+            <details class="group py-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl text-plum-900">
+                {f.q}
+                <span class="grid size-8 shrink-0 place-items-center rounded-full border border-pearl-200 text-orchid-700 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+              </summary>
+              <p class="mt-3 max-w-prose leading-relaxed text-muted">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other location -->
+  <section class="bg-pearl-100 py-16 md:py-24">
+    <div class="wrap">
+      <h2 class={h3}>Our other office</h2>
+      <a href={`/locations/${other.slug}`} class="group mt-8 grid overflow-hidden rounded-2xl bg-plum-900 text-pearl-50 md:grid-cols-2">
+        <img src={photo(other.img, 900, 600)} alt="" loading="lazy" class="h-56 w-full object-cover md:h-full" />
+        <div class="p-8 md:p-10">
+          <span class="rounded-full bg-pearl-50/15 px-3 py-1 text-xs font-medium">{other.badge}</span>
+          <h3 class="mt-4 font-display text-4xl font-light">{other.name}</h3>
+          <p class="mt-3 text-pearl-50/80">{other.lines[0]}<br />{other.lines[1]}</p>
+          <p class="mt-3 text-pearl-50/80">{other.tagline}</p>
+          <span class="link-u mt-6 inline-flex font-semibold">View this location →</span>
+        </div>
+      </a>
+      <p class="mt-10 max-w-3xl text-sm leading-relaxed text-muted" role="note">{l.notice} {site.disclaimer}</p>
+    </div>
+  </section>
+</BaseLayout>

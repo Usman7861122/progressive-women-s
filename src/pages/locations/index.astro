@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locationPages } from '../../data/locations';
+import { photo } from '../../data/images';
+import { site } from '../../data/site';
+---
+
+<BaseLayout title="Locations" description="Our offices in Friendswood, TX and Kenner, LA. Telemedicine is available for patients in Louisiana.">
+  <section class="bg-plum-950 pb-16 pt-40 text-pearl-50 md:pb-20 md:pt-48">
+    <div class="wrap max-w-4xl">
+      <nav aria-label="Breadcrumb" class="text-sm text-pearl-50/60">
+        <ol class="flex items-center gap-2">
+          <li><a href="/" class="hover:text-pearl-50">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-champagne">Locations</li>
+        </ol>
+      </nav>
+      <h1 class="mt-8 font-display text-5xl font-light leading-[1.05] md:text-7xl">Our locations</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pearl-50/85">Two offices, one team. Visit us in Friendswood, or meet with us by secure video from anywhere in Louisiana.</p>
+    </div>
+  </section>
+
+  <section class="section bg-pearl-50">
+    <div class="wrap grid gap-8 lg:grid-cols-2">
+      {locationPages.map((l) => (
+        <a href={`/locations/${l.slug}`} class="group flex flex-col overflow-hidden rounded-3xl border border-pearl-200 bg-pearl-100 transition-shadow duration-300 hover:shadow-[0_24px_60px_-24px_rgba(38,13,45,0.35)]">
+          <div class="relative aspect-[16/9] overflow-hidden bg-plum-900">
+            <img src={photo(l.img, 1000, 560)} alt="" loading="lazy" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <span class:list={['absolute left-5 top-5 rounded-full px-4 py-1.5 text-sm font-medium', l.telemedicineOnly ? 'bg-orchid-600 text-white' : 'bg-pearl-50 text-plum-900']}>{l.badge}</span>
+          </div>
+          <div class="flex flex-1 flex-col p-8">
+            <h2 class="font-display text-4xl text-plum-900">{l.name}</h2>
+            <p class="mt-2 text-muted">{l.tagline}</p>
+            <address class="mt-5 not-italic leading-relaxed text-ink">{l.lines[0]}<br />{l.lines[1]}<br />{l.phone}</address>
+            <span class="link-u mt-6 inline-flex self-start font-semibold text-orchid-700">View location details →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="wrap mt-14 text-center">
+      <a href={site.bookingUrl} class="shiny"><span>Book Telemedicine</span></a>
+    </div>
+  </section>
+</BaseLayout>

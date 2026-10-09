@@ -3,6 +3,7 @@
 // benefits, what to expect, safety, FAQ, related care, closing call to action.
 // [Brackets] mark text the practice should confirm.
 import { IMG } from './images';
+import { moreConditions } from './condition-more';
 
 export type Area = { city: string; time: string };
 
@@ -132,3 +133,5 @@ export const conditionPages: ConditionPage[] = [
       'Some services listed are elective, may not be covered by insurance, or may involve treatments used off-label. Your clinician will discuss risks, benefits, and alternatives before any treatment. Individual results vary.',
   },
 ];
+
+export const allConditionPages: ConditionPage[] = [...conditionPages, ...moreConditions];
