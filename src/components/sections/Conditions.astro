@@ -28,7 +28,7 @@ const items = all ? conditions : conditions.filter((c) => featured.includes(c.sl
           title={c.short ?? c.name}
           text={c.text}
           img={photo(c.img, 800, 1000)}
-          href={`/conditions#${c.slug}`}
+          href={['menopause'].includes(c.slug) ? `/conditions/${c.slug}` : `/conditions#${c.slug}`}
           class="aspect-[5/4] sm:aspect-[4/5]"
         />
       ))}

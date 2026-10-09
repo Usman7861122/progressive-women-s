@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { conditionPages } from '../../data/condition-pages';
+import { photo } from '../../data/images';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return conditionPages.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props;
+const office = site.locations.find((l) => l.name.startsWith('Friendswood'))!;
+const dest = encodeURIComponent(office.mapQuery);
+const dir = (city: string) => `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(city.split(' / ')[0] + ', TX')}&destination=${dest}`;
+const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
+---
+
+<BaseLayout title={c.title} description={c.summary}>
+  <!-- Hero -->
+  <section class="relative isolate overflow-hidden bg-plum-950 pb-20 pt-40 text-pearl-50 md:pb-28 md:pt-48">
+    <img src={photo(c.heroImg, 2000)} alt="" class="absolute inset-0 -z-20 h-full w-full object-cover opacity-45" />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-plum-950 via-plum-950/65 to-plum-950/30" aria-hidden="true"></div>
+    <div class="wrap max-w-4xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Condition · Friendswood, TX</p>
+      <h1 class="mt-4 font-display text-5xl font-light leading-[1.05] md:text-7xl">{c.title}</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pearl-50/85">{c.summary}</p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href={site.bookingUrl} class="btn btn-light">Request a visit</a>
+        <a href={`tel:${site.phoneBook}`} class="btn btn-line">Call {site.phoneBook}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section bg-pearl-50">
+    <div class="wrap grid items-center gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <h2 class={h3}>{c.overview.heading}</h2>
+        <div class="mt-6 space-y-5 text-lg leading-relaxed text-muted">
+          {c.overview.paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href={site.bookingUrl} class="btn btn-solid">Request a visit</a>
+          <a href={`tel:${site.phoneBook}`} class="btn btn-line text-plum-900">Call us</a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-5 lg:col-span-6">
+        <img src={photo(c.overview.photos[0], 700, 900)} alt="" loading="lazy" class="aspect-[3/4] w-full rounded-2xl object-cover" />
+        <img src={photo(c.overview.photos[1], 700, 900)} alt="" loading="lazy" class="mt-10 aspect-[3/4] w-full rounded-2xl object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Who may need care -->
+  <section class="bg-pearl-100 py-20 md:py-28">
+    <div class="wrap">
+      <h2 class={h3}>{c.candidate.heading}</h2>
+      <p class="lede mt-5">{c.candidate.text}</p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-pearl-200 bg-pearl-50 p-8">
+          <h3 class="font-display text-2xl text-plum-900">{c.candidate.signsTitle}</h3>
+          <ul class="mt-5 space-y-3">
+            {c.candidate.signs.map((s) => (
+              <li class="flex gap-3 text-ink"><span class="mt-2 size-1.5 shrink-0 rounded-full bg-orchid-600" aria-hidden="true"></span>{s}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-pearl-200 bg-pearl-50 p-8">
+          <h3 class="font-display text-2xl text-plum-900">{c.candidate.helpTitle}</h3>
+          <ul class="mt-5 space-y-3">
+            {c.candidate.help.map((s) => (
+              <li class="flex gap-3 text-ink"><span class="mt-2 size-1.5 shrink-0 rounded-full bg-champagne" aria-hidden="true"></span>{s}</li>
+            ))}
+          </ul>
+          {c.candidate.note && <p class="mt-6 rounded-lg bg-pearl-100 p-4 text-sm text-ink" role="note">{c.candidate.note}</p>}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Near you -->
+  <section id="near-you" class="section on-dark relative overflow-hidden bg-plum-900 text-pearl-50">
+    <div class="wrap grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Near you</p>
+        <h2 class={`${h3} mt-4`}>{c.name} care in Friendswood and nearby cities</h2>
+        <p class="lede mt-6">{c.near.intro}</p>
+        <a href={site.bookingUrl} class="btn btn-light mt-8">Request a visit</a>
+
+        <h3 class="mt-12 text-sm font-semibold uppercase tracking-[0.16em] text-orchid-200">Patients come to us from</h3>
+        <ul class="mt-4 flex flex-wrap gap-2.5">
+          {c.near.cities.map((x) => <li class="rounded-full border border-pearl-50/25 px-4 py-1.5 text-sm">{x}</li>)}
+        </ul>
+        <p class="mt-5 text-sm text-pearl-50/70">{c.near.closing}</p>
+
+        <div class="mt-10 rounded-2xl border border-pearl-50/15 bg-plum-950/40 p-6">
+          <h3 class="font-display text-2xl text-orchid-200">Also in Louisiana</h3>
+          <p class="mt-2 text-sm leading-relaxed text-pearl-50/80">{c.near.louisiana.text}</p>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {c.near.louisiana.cities.map((x) => <li class="rounded-full bg-pearl-50/10 px-3 py-1 text-xs">{x}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <div class="rounded-3xl bg-pearl-50 p-8 text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] md:p-10">
+          <h3 class="font-display text-3xl text-plum-900">{c.near.guideTitle}</h3>
+          <address class="mt-4 not-italic leading-relaxed text-ink">
+            <strong class="text-plum-900">{office.name}</strong><br />
+            {office.lines[0]}<br />{office.lines[1]}<br />
+            <a href={`tel:${office.phone}`} class="link-u">{office.phone}</a>
+          </address>
+
+          <ul class="mt-6 divide-y divide-pearl-200 border-y border-pearl-200">
+            {c.near.areas.map((a) => (
+              <li class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3 text-sm">
+                <span class="font-medium text-plum-900">From {a.city}</span>
+                <span class="flex items-center gap-4">
+                  <span class="text-muted">{a.time}</span>
+                  <a href={dir(a.city)} target="_blank" rel="noopener" class="link-u font-medium text-orchid-700">Get directions →</a>
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <ul class="mt-6 space-y-2.5 text-sm text-muted">
+            {c.near.tips.map((t) => (
+              <li class="flex gap-3"><span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-champagne" aria-hidden="true"></span>{t}</li>
+            ))}
+          </ul>
+          <a href={`https://www.google.com/maps/search/?api=1&query=${dest}`} target="_blank" rel="noopener" class="btn btn-solid mt-8">Open the office in Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section bg-pearl-50">
+    <div class="wrap">
+      <h2 class={h3}>What can treatment help with?</h2>
+      <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {c.benefits.map((b, i) => (
+          <li class="rounded-2xl border border-pearl-200 bg-pearl-100 p-7">
+            <span class="font-display text-3xl text-champagne">0{i + 1}</span>
+            <h3 class="mt-3 font-display text-2xl text-plum-900">{b.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink">{b.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- What to expect -->
+  <section class="bg-pearl-100 py-20 md:py-28">
+    <div class="wrap">
+      <h2 class={h3}>What to expect</h2>
+      <ol class="mt-10 grid gap-6 md:grid-cols-3">
+        {c.steps.map((s, i) => (
+          <li class="relative rounded-2xl bg-pearl-50 p-8">
+            <span class="grid size-10 place-items-center rounded-full bg-orchid-600 font-semibold text-white">{i + 1}</span>
+            <h3 class="mt-5 font-display text-2xl text-plum-900">{s.title}</h3>
+            <p class="mt-2 text-ink">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="mt-16 grid gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <h2 class={h3}>{c.safety.heading}</h2>
+        </div>
+        <p class="text-lg leading-relaxed text-muted lg:col-span-7">{c.safety.text}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-pearl-50">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <h2 class={`${h3} lg:col-span-4`}>Questions we hear</h2>
+      <div class="divide-y divide-pearl-200 border-y border-pearl-200 lg:col-span-8">
+        {c.faq.map((f) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl text-plum-900">
+              {f.q}
+              <span class="grid size-8 shrink-0 place-items-center rounded-full border border-pearl-200 text-orchid-700 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 max-w-prose leading-relaxed text-muted">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="bg-pearl-100 py-20 md:py-28">
+    <div class="wrap">
+      <h2 class={h3}>More ways we can help.</h2>
+      <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {c.related.map((r) => (
+          <li>
+            <a href={r.href} class="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-plum-900 text-pearl-50">
+              <img src={photo(r.img, 700, 520)} alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <span class="absolute inset-0 bg-gradient-to-t from-plum-950/90 via-plum-950/30 to-transparent"></span>
+              <span class="absolute inset-x-0 bottom-0 p-5">
+                <span class="block font-display text-2xl leading-tight">{r.label}</span>
+                <span class="mt-1 block text-sm text-pearl-50/80">{r.text}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-10 max-w-3xl text-sm leading-relaxed text-muted" role="note">{c.notice} {site.disclaimer}</p>
+    </div>
+  </section>
+
+  <!-- Closing call to action -->
+  <section class="on-dark bg-plum-900 py-20 text-center text-pearl-50 md:py-28">
+    <div class="wrap">
+      <h2 class="font-display text-4xl font-light md:text-6xl">Ready when you are.</h2>
+      <p class="lede mx-auto mt-5">Tell us how you are feeling, and we will help you find a plan.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href={site.bookingUrl} class="btn btn-light">Request a visit</a>
+        <a href={`tel:${site.phoneBook}`} class="btn btn-line">Call {site.phoneBook}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
