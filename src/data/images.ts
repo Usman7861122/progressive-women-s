@@ -28,5 +28,6 @@ export const IMG = {
   family: '1476703993599-0035a21b17a9',
   hands: '1584515933487-779824d29309',
   scale: '1522844990619-4951c40f7eda',
+  doctorMan: '1612349317150-e413f6a5b16d',
   workout: '1518611012118-696072aa579a',
 } as const;

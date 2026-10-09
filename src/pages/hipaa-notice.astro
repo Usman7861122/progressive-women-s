@@ -1,0 +1,10 @@
+---
+import DocPage from '../components/ui/DocPage.astro';
+import { site } from '../data/site';
+---
+
+<DocPage title="HIPAA Notice of Privacy Practices" kicker="Legal" description="How medical information about you may be used and shared, and how you can get access to it.">
+  <p class="rounded-lg border border-orchid-200 bg-pearl-100 p-4 text-sm">[Draft placeholder. The practice will supply the full Notice of Privacy Practices.]</p>
+  <p>This notice describes how medical information about you may be used and disclosed, and how you can get access to this information. Please review it carefully.</p>
+  <p>For questions, contact us at <a href={`tel:${site.phoneInfo}`}>{site.phoneInfo}</a> or <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+</DocPage>

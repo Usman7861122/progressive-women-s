@@ -67,11 +67,14 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
           </nav>
 
           <div className="flex items-center gap-3">
+            <a href={`tel:${site.phoneInfo}`} className="hidden whitespace-nowrap text-sm font-medium 2xl:inline">
+              Call {site.phoneInfo}
+            </a>
             <a
               href={site.bookingUrl}
-              className={`btn hidden !px-6 !py-2.5 sm:inline-flex ${clear ? 'btn-light' : 'btn-solid'}`}
+              className={`btn hidden whitespace-nowrap !px-5 !py-2.5 !text-[0.8rem] sm:inline-flex ${clear ? 'btn-light' : 'btn-solid'}`}
             >
-              Book online
+              Request an appointment
             </a>
             <button
               type="button"
@@ -155,10 +158,13 @@ export default function Header({ overHero = false }: { overHero?: boolean }) {
               ))}
             </nav>
             <a href={site.bookingUrl} onClick={() => setOpen(false)} className="btn btn-light mt-10 self-start">
-              Book online
+              Request an appointment
             </a>
-            <a href={`tel:${site.phoneBook}`} className="mt-6 text-orchid-200">
-              {site.phoneBook}
+            <a href="/pay-bill" onClick={() => setOpen(false)} className="mt-6 text-orchid-200 underline underline-offset-4">
+              Pay my bill
+            </a>
+            <a href={`tel:${site.phoneInfo}`} className="mt-3 text-orchid-200">
+              {site.phoneInfo}
             </a>
           </motion.div>
         )}

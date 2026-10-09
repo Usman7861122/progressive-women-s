@@ -25,20 +25,17 @@ const q = encodeURIComponent(site.mapQuery);
           ></iframe>
         </div>
         <dl class="mt-8 grid gap-6 sm:grid-cols-2">
-          <div>
-            <dt class="font-display text-2xl text-plum-900">Visit us</dt>
-            <dd class="mt-1 text-muted">
-              {site.address[0]}<br />{site.address[1]}<br />
-              <a class="link-u font-semibold text-orchid-600" href={`https://www.google.com/maps/dir/?api=1&destination=${q}`} target="_blank" rel="noopener">Get directions</a>
-            </dd>
-          </div>
-          <div>
-            <dt class="font-display text-2xl text-plum-900">Call us</dt>
-            <dd class="mt-1 text-muted">
-              Appointments: <a class="link-u" href={`tel:${site.phoneBook}`}>{site.phoneBook}</a><br />
-              General questions: <a class="link-u" href={`tel:${site.phoneInfo}`}>{site.phoneInfo}</a>
-            </dd>
-          </div>
+          {site.locations.map((l) => (
+            <div>
+              <dt class="font-display text-2xl text-plum-900">{l.name}</dt>
+              <dd class="mt-1 text-muted">
+                {l.note && <span class="block text-sm">{l.note}</span>}
+                {l.lines[0]}<br />{l.lines[1]}<br />
+                <a class="link-u" href={`tel:${l.phone}`}>{l.phone}</a><br />
+                <a class="link-u font-semibold text-orchid-600" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(l.mapQuery)}`} target="_blank" rel="noopener">Get directions</a>
+              </dd>
+            </div>
+          ))}
         </dl>
       </div>
 

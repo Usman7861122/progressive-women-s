@@ -1,0 +1,20 @@
+---
+import DocPage from '../components/ui/DocPage.astro';
+import { site } from '../data/site';
+---
+
+<DocPage title="Privacy &amp; Legal Notices" kicker="Legal" description="Privacy, terms of use, nondiscrimination and accessibility.">
+  <p class="rounded-lg border border-orchid-200 bg-pearl-100 p-4 text-sm">[Draft text. To be reviewed by the practice’s healthcare attorney before launch.]</p>
+  <h2>Website privacy</h2>
+  <p>This website collects only the information you choose to send us. Please do not send health details through the website unless you use our secure appointment form. We do not use third-party advertising or tracking on condition or service pages without the practice’s approval.</p>
+  <h2>Notice of Privacy Practices</h2>
+  <p>Read how we protect your health information on the <a href="/hipaa-notice">HIPAA Notice</a> page.</p>
+  <h2>Terms of use</h2>
+  <p>{site.disclaimer} If you have a medical emergency, call 911. For crisis support, call or text 988.</p>
+  <h2>AI disclosure</h2>
+  <p>[Practice to supply: which AI documentation tools, if any, are used during visits, and how patients can ask questions.]</p>
+  <h2>Nondiscrimination</h2>
+  <p>{site.legal} does not discriminate on the basis of race, color, national origin, age, disability or sex. [Practice to supply the full notice.]</p>
+  <h2>Accessibility</h2>
+  <p>We work to make this website easy to use for everyone and to meet WCAG accessibility standards. If you have trouble using any page, contact us at <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+</DocPage>

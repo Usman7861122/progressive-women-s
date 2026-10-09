@@ -1,0 +1,14 @@
+---
+import DocPage from '../components/ui/DocPage.astro';
+import { site } from '../data/site';
+---
+
+<DocPage title="Pay my bill" kicker="Patients" description="Pay your bill through our secure patient payment portal.">
+  <p>You can pay your bill online through our secure patient payment portal, run by our billing system.</p>
+  <p><a href={site.payPortalUrl} class="btn btn-solid" rel="noopener">Pay my bill online</a></p>
+  <p class="text-sm text-muted">Card details are never entered on, or stored by, this website. You will be taken to the secure portal to pay.</p>
+  <h2>Good Faith Estimate</h2>
+  <p>You have the right to receive a Good Faith Estimate of the expected charges for your care if you are uninsured or choose not to use your insurance. Ask our team for an estimate before your visit, or call us at <a href={`tel:${site.phoneInfo}`}>{site.phoneInfo}</a>. For more on your rights under the No Surprises Act, visit <a href="https://www.cms.gov/nosurprises" rel="noopener">cms.gov/nosurprises</a>.</p>
+  <h2>Questions about your bill</h2>
+  <p>Call <a href={`tel:${site.phoneInfo}`}>{site.phoneInfo}</a> or email <a href={`mailto:${site.email}`}>{site.email}</a>. Please do not send card numbers or health details by email.</p>
+</DocPage>
