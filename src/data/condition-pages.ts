@@ -11,6 +11,8 @@ export type ConditionPage = {
   name: string;
   title: string; // H1
   summary: string;
+  welcome: string;
+  telemedicine: string;
   heroImg: string;
   overview: { heading: string; paragraphs: string[]; photos: [string, string] };
   candidate: { heading: string; text: string; signsTitle: string; signs: string[]; helpTitle: string; help: string[]; note?: string };
@@ -38,6 +40,8 @@ export const conditionPages: ConditionPage[] = [
     title: 'Menopause care in Friendswood, TX',
     summary:
       'Hot flashes, poor sleep, mood changes and more can make this stage hard. We listen, explain your options in plain words, and build a plan that fits your life. Many visits are also available by telehealth.',
+    welcome: 'Patients are welcome from across Friendswood, Pearland, League City, Webster, Clear Lake and the greater Bay Area.',
+    telemedicine: 'Our Kenner, LA office is also available for telemedicine.',
     heroImg: IMG.sunrise,
     overview: {
       heading: 'What is menopause?',
