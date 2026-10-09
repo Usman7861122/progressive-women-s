@@ -78,4 +78,77 @@ export const serviceItemPages: ConditionPage[] = [
     notice:
       'Primary care services are for adults 18 and older. Our Louisiana practice currently provides care by telemedicine only, and you must be physically located in Louisiana at the time of each visit. Some parts of a physical need an in-person exam. Telemedicine is not for emergencies: call 911.',
   }),
+  make({
+    slug: 'age-appropriate-cancer-and-health-screenings',
+    name: 'Age-appropriate cancer & health screenings',
+    what: 'screening',
+    kicker: 'Primary care',
+    parent: { label: 'Primary Care', href: '/primary-care' },
+    nearHeading: 'Health screenings in Friendswood and nearby cities',
+    benefitsHeading: 'Why screening matters',
+    title: 'Cancer and health screenings in Friendswood, TX',
+    summary:
+      'Screening finds problems before they cause symptoms, when they are easiest to treat. We review your age, history and family risks, tell you which tests you need and when, and help you get them done.',
+    heroImg: IMG.scans,
+    overview: {
+      heading: 'What are age-appropriate screenings?',
+      paragraphs: [
+        'Screening means testing for a condition before you have any signs of it. Which tests you need depends on your age, sex, health history, family history and habits, so a plan that fits one person may not fit another.',
+        'We go through your risks and build a simple screening schedule. We order the tests, help you book them near you, and go over the results with you.',
+      ],
+      photos: [IMG.scans, IMG.labWoman],
+    },
+    candidate: {
+      heading: 'Who should be screened?',
+      text: 'Most adults need some screening, and the list grows with age. These are common examples. Your own plan may start earlier or later, based on your risk.',
+      signsTitle: 'Common screenings (general guide)',
+      signs: [
+        'Breast cancer: mammogram, often every one to two years from about age 40',
+        'Cervical cancer: Pap and HPV tests, from age 21 to 65',
+        'Colorectal cancer: from about age 45 to 75',
+        'Lung cancer: low-dose CT for some current or past heavy smokers',
+        'Blood pressure, cholesterol and blood sugar checks',
+        'Bone density, hepatitis C and other tests, based on your risk',
+      ],
+      helpTitle: 'How we can help',
+      help: [
+        'Age-appropriate cancer & health screenings',
+        'Cardiovascular risk assessment',
+        'Immunization review & recommendations',
+        'Breast cancer risk assessment & reduction',
+        'Colorectal cancer risk assessment & reduction',
+        'Melanoma (skin cancer) risk assessment & reduction',
+      ],
+      note: 'New lumps, bleeding, unexplained weight loss or pain should be checked right away. Please do not wait for your next screening.',
+    },
+    benefits: [
+      { title: 'Early detection', text: 'Many problems are easier to treat when found early.' },
+      { title: 'A clear schedule', text: 'You know what you need and when.' },
+      { title: 'Less worry', text: 'Normal results bring peace of mind.' },
+      { title: 'Help with every step', text: 'We order tests, explain results and plan next steps.' },
+    ],
+    steps: [
+      { title: 'Request a telemedicine visit', text: 'Send a request and our team will call you to schedule your video visit.' },
+      { title: 'Review your risks', text: 'We go over your age, history and family risks, and build your screening plan.' },
+      { title: 'Get tested and follow up', text: 'We order your tests, help you book them near you, and review the results with you.' },
+    ],
+    safety: {
+      heading: 'What can be done by video?',
+      text: 'Planning your screenings and reviewing your results can be done by video. The tests themselves, such as a mammogram, a Pap test or a colonoscopy, are done at a lab or imaging center, and we help you arrange them. Screening guidelines change over time and depend on your risks, so your clinician will explain the benefits and limits of each test before you decide.',
+    },
+    faq: [
+      { q: 'How do I know which screenings I need?', a: 'It depends on your age, health and family history. We review these with you and write a plan.' },
+      { q: 'What if I have a family history of cancer?', a: 'You may need to start earlier, or be tested more often. We can also talk about genetic testing.' },
+      { q: 'What happens if a test is abnormal?', a: 'An abnormal result does not always mean cancer. We explain what it means and arrange follow-up tests or specialists.' },
+      { q: 'Does insurance cover screening?', a: 'Many screenings are covered when they meet guidelines, but coverage varies. [Practice to confirm accepted plans.]' },
+    ],
+    related: [
+      { label: 'Preventive care & wellness', text: 'See everything in this group.', href: '/primary-care#preventive-care-and-wellness', img: IMG.doctor },
+      { label: 'Annual physical examinations', text: 'Your yearly check-up.', href: '/primary-care/annual-physical-examinations', img: IMG.stethLaptop },
+      { label: 'Genetic testing', text: 'Know your family cancer risk.', href: '/conditions/genetic-testing', img: IMG.lab },
+      { label: 'Annual well-woman exams', text: 'Pap tests and women’s health.', href: '/conditions/annual-exams', img: IMG.hands },
+    ],
+    notice:
+      'Primary care services are for adults 18 and older. Screening recommendations are general and depend on your personal and family history. Our Louisiana practice currently provides care by telemedicine only, and you must be physically located in Louisiana at the time of each visit. Telemedicine is not for emergencies: call 911.',
+  }),
 ];
