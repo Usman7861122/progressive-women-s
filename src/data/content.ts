@@ -9,7 +9,7 @@ export const services = [
   { slug: 'hysteroscopy', name: 'Hysteroscopy', text: 'A look inside the uterus to find and treat the cause of bleeding.', img: IMG.surgery },
   { slug: 'menopause', name: 'Menopause', text: 'Relief from hot flashes, poor sleep and vaginal dryness.', img: IMG.sunset },
   { slug: 'irregular-bleeding', name: 'Irregular bleeding', text: 'Answers for heavy, frequent or unpredictable periods.', img: IMG.yoga },
-  { slug: 'telemedicine', name: 'Telemedicine', text: 'Virtual visits with Dr. Mohsin from the comfort of home.', img: IMG.phone },
+  { slug: 'telemedicine', name: 'Telemedicine', text: 'Virtual visits with our Providers from the comfort of home.', img: IMG.phone },
 ];
 
 export const conditions = [
@@ -31,7 +31,7 @@ export const conditions = [
 export const steps = [
   { title: 'Book your visit', text: 'Use the online scheduler, call the office, or choose a virtual visit. Most patients are booked within minutes.', img: IMG.phone },
   { title: 'Share your story', text: 'Tell us your history and what is worrying you. There is no rush, and no question is too small.', img: IMG.portraitC },
-  { title: 'Your exam, explained', text: 'Dr. Mohsin explains each step before it happens, so you always know what comes next.', img: IMG.consult },
+  { title: 'Your exam, explained', text: 'Our Providers explain each step before it happens, so you always know what comes next.', img: IMG.consult },
   { title: 'Your plan', text: 'You leave with clear answers and a follow-up plan you understand.', img: IMG.pen },
 ];
 

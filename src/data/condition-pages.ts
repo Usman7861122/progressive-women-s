@@ -81,7 +81,7 @@ export const conditionPages: ConditionPage[] = [
     },
     near: {
       intro:
-        'Dr. Asia Mohsin provides menopause care at our Friendswood office and by telehealth. We welcome patients from across the Bay Area and south Houston.',
+        'Our Providers provide menopause care at our Friendswood office and by telehealth. We welcome patients from across the Bay Area and south Houston.',
       cities: ['Friendswood', 'Pearland', 'League City', 'Webster', 'Clear Lake', 'Alvin', 'Dickinson', 'Pasadena', 'Sugar Land', 'Houston'],
       closing: 'Not on the list? Call us, or ask about a telehealth visit.',
       guideTitle: 'A short guide to reach us',

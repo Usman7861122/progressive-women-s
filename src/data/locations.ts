@@ -46,7 +46,7 @@ export const locationPages: LocationPage[] = [
     telemedicineOnly: false,
     title: 'Progressive Women’s Health in Friendswood, TX',
     summary:
-      'Our Friendswood office is where Dr. Asia Mohsin sees patients in person. You can also choose a telemedicine visit from home. We welcome patients from across the Bay Area and south Houston.',
+      'Our Friendswood office is where our Providers see patients in person. You can also choose a telemedicine visit from home. We welcome patients from across the Bay Area and south Houston.',
     lines: ['907 South Friendswood Drive, Suite 109', 'Friendswood, TX 77546'],
     phone: '281-626-7694',
     email: 'contact@progressivewomenshealthonline.com',

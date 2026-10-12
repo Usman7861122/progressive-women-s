@@ -1,5 +1,5 @@
 // The other condition pages. Same structure as the menopause page (see condition-pages.ts).
-// Text is written in plain English and should be reviewed by Dr. Mohsin before launch.
+// Text is written in plain English and should be reviewed by our Providers before launch.
 import { IMG } from './images';
 import type { ConditionPage } from './condition-pages';
 
@@ -18,7 +18,7 @@ const AREAS = [
 ];
 
 export const near = (what: string): ConditionPage['near'] => ({
-  intro: `Dr. Asia Mohsin provides ${what} care at our Friendswood office and by telehealth. We welcome patients from across the Bay Area and south Houston.`,
+  intro: `Our Providers provide ${what} care at our Friendswood office and by telehealth. We welcome patients from across the Bay Area and south Houston.`,
   cities: ['Friendswood', 'Pearland', 'League City', 'Webster', 'Clear Lake', 'Alvin', 'Dickinson', 'Pasadena', 'Sugar Land', 'Houston'],
   closing: 'Not on the list? Call us, or ask about a telehealth visit.',
   guideTitle: 'A short guide to reach us',

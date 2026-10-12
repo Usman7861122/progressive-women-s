@@ -45,7 +45,7 @@ export default function WelcomeCollage({ main, second, rating, reviews, reviewsU
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="aspect-[4/5] overflow-hidden rounded-lg bg-pearl-200 shadow-[0_30px_70px_-30px_rgba(38,13,45,0.5)]"
           >
-            <img src={main} alt="Dr. Asia Mohsin smiling outdoors in a white coat" width={299} height={450} loading="lazy" className="h-full w-full object-cover object-top" />
+            <img src={main} alt="Our provider smiling outdoors in a white coat" width={299} height={450} loading="lazy" className="h-full w-full object-cover object-top" />
           </motion.div>
         </motion.div>
 
