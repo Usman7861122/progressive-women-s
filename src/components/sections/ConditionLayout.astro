@@ -29,16 +29,9 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
       </nav>
       <p class="mt-10 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-champagne">
         {c.kicker ?? 'Condition'} ·
-        <span class="rounded-full border border-champagne/50 px-4 py-2 text-sm font-normal normal-case tracking-normal text-pearl-50">Friendswood, TX</span>
       </p>
       <h1 class="mt-5 font-display text-5xl font-light leading-[1.05] md:text-7xl">{c.title}</h1>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pearl-50/85">{c.summary}</p>
-      <div class="mt-8 border-t border-pearl-50/20 pt-6">
-        <p class="flex max-w-3xl gap-3 text-pearl-50/75">
-          <svg viewBox="0 0 24 24" class="mt-1 h-5 w-5 shrink-0 fill-none stroke-champagne" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 1 1 13 0c0 4.8-6.5 11-6.5 11z" /><circle cx="12" cy="10" r="2.3" /></svg>
-          <span>{c.welcome} {c.telemedicine}</span>
-        </p>
-      </div>
       <div class="mt-8 flex flex-wrap gap-4">
         <a href={site.bookingUrl} class="shiny"><span>Book Telemedicine</span></a>
         <a href={`tel:${site.phoneBook}`} class="btn btn-line">Call {site.phoneBook}</a>
@@ -94,60 +87,6 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
   </section>
 
   <!-- Near you -->
-  <section id="near-you" class="section on-dark relative overflow-hidden bg-plum-900 text-pearl-50">
-    <div class="wrap grid gap-14 lg:grid-cols-12">
-      <div class="lg:col-span-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Near you</p>
-        <h2 class={`${h3} mt-4`}>{c.nearHeading ?? `${c.name} care in Friendswood and nearby cities`}</h2>
-        <p class="lede mt-6">{c.near.intro}</p>
-        <a href={site.bookingUrl} class="shiny mt-8"><span>Book Telemedicine</span></a>
-
-        <h3 class="mt-12 text-sm font-semibold uppercase tracking-[0.16em] text-orchid-200">Patients come to us from</h3>
-        <ul class="mt-4 flex flex-wrap gap-2.5">
-          {c.near.cities.map((x) => <li class="rounded-full border border-pearl-50/25 px-4 py-1.5 text-sm">{x}</li>)}
-        </ul>
-        <p class="mt-5 text-sm text-pearl-50/70">{c.near.closing}</p>
-
-        <div class="mt-10 rounded-2xl border border-pearl-50/15 bg-plum-950/40 p-6">
-          <h3 class="font-display text-2xl text-orchid-200">Also in Louisiana</h3>
-          <p class="mt-2 text-sm leading-relaxed text-pearl-50/80">{c.near.louisiana.text}</p>
-          <ul class="mt-4 flex flex-wrap gap-2">
-            {c.near.louisiana.cities.map((x) => <li class="rounded-full bg-pearl-50/10 px-3 py-1 text-xs">{x}</li>)}
-          </ul>
-        </div>
-      </div>
-
-      <div class="lg:col-span-6">
-        <div class="rounded-3xl bg-pearl-50 p-8 text-ink shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] md:p-10">
-          <h3 class="font-display text-3xl text-plum-900">{c.near.guideTitle}</h3>
-          <address class="mt-4 not-italic leading-relaxed text-ink">
-            <strong class="text-plum-900">{office.name}</strong><br />
-            {office.lines[0]}<br />{office.lines[1]}<br />
-            <a href={`tel:${office.phone}`} class="link-u">{office.phone}</a>
-          </address>
-
-          <ul class="mt-6 divide-y divide-pearl-200 border-y border-pearl-200">
-            {c.near.areas.map((a) => (
-              <li class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-3 text-sm">
-                <span class="font-medium text-plum-900">From {a.city}</span>
-                <span class="flex items-center gap-4">
-                  <span class="text-muted">{a.time}</span>
-                  <a href={dir(a.city)} target="_blank" rel="noopener" class="link-u font-medium text-orchid-700">Get directions →</a>
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <ul class="mt-6 space-y-2.5 text-sm text-muted">
-            {c.near.tips.map((t) => (
-              <li class="flex gap-3"><span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-champagne" aria-hidden="true"></span>{t}</li>
-            ))}
-          </ul>
-          <a href={`https://www.google.com/maps/search/?api=1&query=${dest}`} target="_blank" rel="noopener" class="btn btn-solid mt-8">Open the office in Maps</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Benefits -->
   <section class="section bg-pearl-50">

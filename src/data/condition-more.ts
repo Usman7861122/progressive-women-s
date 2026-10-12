@@ -73,7 +73,7 @@ export const make = ({ what, steps, notice, ...c }: Input): ConditionPage => ({
 export const moreConditions: ConditionPage[] = [
   make({
     slug: 'heavy-periods-menorrhagia', name: 'Heavy periods', what: 'heavy period',
-    title: 'Heavy period care in Friendswood, TX',
+    title: 'Heavy period care',
     summary: 'Soaking through pads, planning your life around your period, or feeling tired all the time? Heavy periods are common, and they can be treated. We look for the cause and explain every option.',
     heroImg: IMG.lake,
     overview: {
@@ -110,7 +110,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'postmenopausal-bleeding', name: 'Postmenopausal bleeding', what: 'postmenopausal bleeding',
-    title: 'Postmenopausal bleeding care in Friendswood, TX',
+    title: 'Postmenopausal bleeding care',
     summary: 'Any bleeding after menopause needs to be checked. Most causes are not serious, but it is always right to ask. We find the cause quickly and explain what comes next.',
     heroImg: IMG.sunset,
     overview: {
@@ -147,7 +147,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'ovarian-cysts', name: 'Ovarian cysts', what: 'ovarian cyst',
-    title: 'Ovarian cyst care in Friendswood, TX',
+    title: 'Ovarian cyst care',
     summary: 'Most ovarian cysts are harmless and go away on their own. We help you tell the difference, check larger or unusual cysts carefully, and treat pain when it comes.',
     heroImg: IMG.stethoscope,
     overview: {
@@ -184,7 +184,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'polycystic-ovarian-syndrome-pcos', name: 'PCOS', what: 'PCOS',
-    title: 'PCOS care in Friendswood, TX',
+    title: 'PCOS care',
     summary: 'Polycystic ovary syndrome (PCOS) can affect your periods, skin, weight and fertility. We help you understand it and build a long-term plan that fits your life.',
     heroImg: IMG.bowl,
     overview: {
@@ -220,7 +220,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'irregular-periods', name: 'Irregular periods', what: 'irregular period',
-    title: 'Irregular period care in Friendswood, TX',
+    title: 'Irregular period care',
     summary: 'Periods that come too often, too rarely, or without a pattern can have many causes. We work out why your cycle changed and treat the cause, not only the symptom.',
     heroImg: IMG.hiker,
     overview: {
@@ -256,7 +256,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'uterine-fibroids', name: 'Uterine fibroids', what: 'uterine fibroid',
-    title: 'Uterine fibroid care in Friendswood, TX',
+    title: 'Uterine fibroid care',
     summary: 'Fibroids are very common and are not cancer. When they cause heavy bleeding, pressure or pain, you have clear options. We walk you through each one.',
     heroImg: IMG.elderConsult,
     overview: {
@@ -292,7 +292,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'infertility', name: 'Infertility', what: 'fertility',
-    title: 'Infertility care in Friendswood, TX',
+    title: 'Infertility care',
     summary: 'Trouble getting pregnant is stressful, and you are not alone. We start with a careful look at why, explain your choices, and support you at every step.',
     heroImg: IMG.familySunset,
     overview: {
@@ -328,7 +328,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'annual-exams', name: 'Annual exams', what: 'well-woman',
-    title: 'Annual well-woman exams in Friendswood, TX',
+    title: 'Annual well-woman exams',
     summary: 'Pap tests, HPV testing and pelvic exams, with every step explained. A yearly visit is a good time to ask anything, from periods to birth control to menopause.',
     heroImg: IMG.hands,
     overview: {
@@ -364,7 +364,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'pregnancy-testing-and-early-pregnancy-care', name: 'Early pregnancy care', what: 'early pregnancy',
-    title: 'Early pregnancy care in Friendswood, TX',
+    title: 'Early pregnancy care',
     summary: 'From confirming a pregnancy to caring for ectopic pregnancy or miscarriage, we provide kind, careful support in the first weeks, when questions are many.',
     heroImg: IMG.baby,
     overview: {
@@ -401,7 +401,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'sexually-transmitted-infections', name: 'STIs', what: 'STI',
-    title: 'STI testing and care in Friendswood, TX',
+    title: 'STI testing and care',
     summary: 'Private testing, treatment and prevention, with no judgment. Most STIs are easy to treat when found early, and getting tested is a sign of taking good care of yourself.',
     heroImg: IMG.lab,
     overview: {
@@ -437,7 +437,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'genetic-testing', name: 'Genetic testing', what: 'genetic testing',
-    title: 'Genetic testing in Friendswood, TX',
+    title: 'Genetic testing',
     summary: 'If breast or ovarian cancer runs in your family, genetic testing can show your own risk. We explain who should test, what results mean, and what you can do about them.',
     heroImg: IMG.labWoman,
     overview: {
@@ -473,7 +473,7 @@ export const moreConditions: ConditionPage[] = [
   }),
   make({
     slug: 'medical-weight-loss', name: 'Medical weight loss', what: 'medical weight loss',
-    title: 'Medical weight loss in Friendswood, TX',
+    title: 'Medical weight loss',
     summary: 'Physician-led weight care built around you. We look at your health, set realistic goals, and offer nutrition support, medicines when they are right for you, and bariatric surgery referrals.',
     heroImg: IMG.scale,
     overview: {

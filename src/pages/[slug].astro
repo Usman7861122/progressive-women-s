@@ -6,8 +6,6 @@ import { site } from '../data/site';
 import CategoryCard from '../components/ui/CategoryCard.astro';
 import { detailLinks } from '../data/detail-links';
 import Conditions from '../components/sections/Conditions.astro';
-import NearYou from '../components/sections/NearYou.astro';
-import { near as buildNear, WELCOME, TELE } from '../data/condition-more';
 
 export function getStaticPaths() {
   return specialtyPages.map((s) => ({ params: { slug: s.slug }, props: { s } }));
@@ -16,7 +14,6 @@ const { s } = Astro.props;
 const cardLayout = !!s.groups?.length && s.groups.every((g) => g.excerpt);
 const cardsWithImg = !!s.cards && s.cards.items.every((c) => c.img);
 const flat = (i: any) => (typeof i === 'string' ? i : i.text);
-const nearData = { ...buildNear(''), intro: `Dr. Asia Mohsin and our team provide ${s.nav.toLowerCase().replace('men’s','men’s')} at our Friendswood office and by telemedicine. We welcome patients from across the Bay Area and south Houston, and from anywhere in Louisiana by video.` };
 const others = specialtyPages.filter((o) => o.slug !== s.slug);
 ---
 
@@ -36,16 +33,9 @@ const others = specialtyPages.filter((o) => o.slug !== s.slug);
       </nav>
       <p class="mt-10 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-champagne">
         {s.badge ?? 'Care services'} ·
-        <span class="rounded-full border border-champagne/50 px-4 py-2 text-sm font-normal normal-case tracking-normal text-pearl-50">Friendswood, TX</span>
       </p>
       <h1 class="mt-5 font-display text-4xl font-light leading-[1.08] md:text-6xl">{s.headline}</h1>
       <p class="mt-6 max-w-2xl font-display text-xl italic text-orchid-200 md:text-2xl">{s.intro}</p>
-      <div class="mt-8 border-t border-pearl-50/20 pt-6">
-        <p class="flex max-w-3xl gap-3 text-pearl-50/75">
-          <svg viewBox="0 0 24 24" class="mt-1 h-5 w-5 shrink-0 fill-none stroke-champagne" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 1 1 13 0c0 4.8-6.5 11-6.5 11z" /><circle cx="12" cy="10" r="2.3" /></svg>
-          <span>{WELCOME} {TELE}</span>
-        </p>
-      </div>
       <div class="mt-8 flex flex-wrap gap-4">
         <a href={site.bookingUrl} class="shiny"><span>Book Telemedicine</span></a>
         <a href={`tel:${site.phoneBook}`} class="btn btn-line">Call {site.phoneBook}</a>
@@ -159,7 +149,6 @@ const others = specialtyPages.filter((o) => o.slug !== s.slug);
 
   {s.slug === 'gynecology' && <Conditions all />}
 
-  <NearYou heading={`${s.name} in Friendswood and nearby cities`} near={nearData} />
 
   <section class="bg-pearl-100 py-20">
     <div class="wrap">

@@ -13,7 +13,7 @@ export const serviceItemPages: ConditionPage[] = [
     parent: { label: 'Primary Care', href: '/primary-care' },
     nearHeading: 'Annual physicals in Friendswood and nearby cities',
     benefitsHeading: 'Why a yearly physical helps',
-    title: 'Annual physical examinations in Friendswood, TX',
+    title: 'Annual physical examinations',
     summary:
       'A yearly check-up is the best way to stay ahead of your health. We review your history, check your risks, update your screenings and vaccines, and make a simple plan for the year. Much of the visit can be done by video.',
     heroImg: IMG.doctor,
@@ -86,7 +86,7 @@ export const serviceItemPages: ConditionPage[] = [
     parent: { label: 'Primary Care', href: '/primary-care' },
     nearHeading: 'Health screenings in Friendswood and nearby cities',
     benefitsHeading: 'Why screening matters',
-    title: 'Cancer and health screenings in Friendswood, TX',
+    title: 'Cancer and health screenings',
     summary:
       'Screening finds problems before they cause symptoms, when they are easiest to treat. We review your age, history and family risks, tell you which tests you need and when, and help you get them done.',
     heroImg: IMG.scans,

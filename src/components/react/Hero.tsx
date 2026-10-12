@@ -36,7 +36,7 @@ export default function Hero({ image, phone, rating, reviews }: Props) {
             transition={{ duration: 1, delay: 2.2 }}
             className="mx-auto mt-8 max-w-xl text-pretty text-lg text-pearl-50/85"
           >
-            PWH Specialities with multiple locations. In person or telemedicine.
+            PWH Specialities with multiple locations.
           </motion.p>
 
           <motion.div

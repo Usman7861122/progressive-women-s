@@ -42,7 +42,7 @@ export const conditionPages: ConditionPage[] = [
   {
     slug: 'menopause',
     name: 'Menopause',
-    title: 'Menopause care in Friendswood, TX',
+    title: 'Menopause care',
     summary:
       'Hot flashes, poor sleep, mood changes and more can make this stage hard. We listen, explain your options in plain words, and build a plan that fits your life. Many visits are also available by telehealth.',
     welcome: 'Patients are welcome from across Friendswood, Pearland, League City, Webster, Clear Lake and the greater Bay Area.',
