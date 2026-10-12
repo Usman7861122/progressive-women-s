@@ -87,8 +87,8 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
   <!-- Services -->
   <section class="bg-pearl-100 py-16 md:py-24">
     <div class="wrap">
-      <h2 class={h3}>Care you can request here</h2>
-      <p class="lede mt-5">{l.telemedicineOnly ? 'All of our services are offered by telemedicine for patients in Louisiana.' : 'All of our services are offered at this office, and many by telemedicine as well.'}</p>
+      <h2 class={h3}>Care at this office</h2>
+      <p class="lede mt-5">{l.telemedicineOnly ? 'These services are offered by telemedicine for patients in Louisiana.' : 'These services are offered at this office, in person and by telemedicine.'}</p>
       <ul class="mt-8 flex flex-wrap gap-3">
         {l.services.map((s) => (
           <li><a href={s.href} class="inline-flex rounded-full border border-pearl-200 bg-pearl-50 px-5 py-2.5 text-sm font-medium text-plum-900 transition-colors hover:border-orchid-600 hover:bg-orchid-600 hover:text-pearl-50">{s.label}</a></li>

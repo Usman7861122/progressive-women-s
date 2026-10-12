@@ -24,6 +24,7 @@ export default function LocationsMega({ onClose }: { onClose: () => void }) {
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-orchid-700" />
               <a href={`tel:${l.phone}`} onClick={onClose} className="link-u">{l.phone}</a>
             </p>
+            <p className="mt-3 text-sm text-muted">{l.services.map((s) => s.label).join(' · ')}</p>
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-pearl-200 pt-4 text-sm font-medium">
               <a href={`/locations/${l.slug}`} onClick={onClose} className="link-u text-orchid-700">Location details →</a>
               <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(l.mapQuery)}`} target="_blank" rel="noopener" onClick={onClose} className="link-u text-plum-900">Get directions</a>

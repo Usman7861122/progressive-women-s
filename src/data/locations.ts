@@ -25,15 +25,10 @@ export type LocationPage = {
   notice: string;
 };
 
-const SERVICES = [
-  { label: 'Primary Care', href: '/primary-care' },
+const FRIENDSWOOD_SERVICES = [
   { label: 'Gynecology', href: '/gynecology' },
-  { label: 'Men’s Health', href: '/mens-health' },
-  { label: 'Psychiatry', href: '/psychiatry' },
-  { label: 'Counseling', href: '/counseling' },
-  { label: 'Pain Management', href: '/pain-management' },
-  { label: 'Weight Management', href: '/weight-management' },
-  { label: 'Aesthetics', href: '/aesthetics' },
+  { label: 'Primary Care', href: '/primary-care' },
+  { label: 'Psychiatry (coming soon)', href: '/psychiatry' },
 ];
 
 export const locationPages: LocationPage[] = [
@@ -58,7 +53,7 @@ export const locationPages: LocationPage[] = [
       { days: 'Saturday – Sunday', time: '[Practice to confirm]' },
     ],
     hoursNote: 'Telemedicine visits are available by appointment. Please call us to find the best time.',
-    services: SERVICES,
+    services: FRIENDSWOOD_SERVICES,
     cities: ['Friendswood', 'Pearland', 'League City', 'Webster', 'Clear Lake', 'Alvin', 'Dickinson', 'Pasadena', 'Sugar Land', 'Houston'],
     guide: {
       title: 'How to get here',
@@ -110,7 +105,11 @@ export const locationPages: LocationPage[] = [
       { days: 'Saturday – Sunday', time: '[Practice to confirm]' },
     ],
     hoursNote: 'Hours shown are for telemedicine appointments. The Kenner office does not yet see patients in person.',
-    services: SERVICES,
+    services: [
+      { label: 'Gynecology', href: '/gynecology' },
+      { label: 'Primary Care', href: '/primary-care' },
+      { label: 'Psychiatry', href: '/psychiatry' },
+    ],
     cities: ['Kenner', 'Metairie', 'New Orleans', 'River Ridge', 'Harahan', 'LaPlace', 'Gretna', 'Harvey', 'Baton Rouge'],
     guide: {
       title: 'How telemedicine works',
