@@ -36,7 +36,7 @@ export default function Hero({ image, phone, rating, reviews }: Props) {
             transition={{ duration: 1, delay: 2.2 }}
             className="mx-auto mt-8 max-w-xl text-pretty text-lg text-pearl-50/85"
           >
-            Gynecology and obstetrics with Dr. Asia Mohsin in Friendswood, Texas. In person or from home.
+            PWH Specialities with multiple locations. In person or telemedicine.
           </motion.p>
 
           <motion.div
@@ -57,6 +57,17 @@ export default function Hero({ image, phone, rating, reviews }: Props) {
           >
             Rated {rating} out of 5 by {reviews} patients
           </motion.p>
+
+          <motion.a
+            href="/shop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 3.0 }}
+            className="mx-auto mt-6 inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border border-pearl-50/25 bg-plum-950/40 px-5 py-2 text-sm text-pearl-50/90 backdrop-blur-sm transition-colors hover:border-pearl-50/60"
+          >
+            Shop online for healthcare products
+            <span className="rounded-full bg-champagne/90 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-plum-950">Shop coming soon</span>
+          </motion.a>
         </div>
       </section>
     </MotionConfig>
