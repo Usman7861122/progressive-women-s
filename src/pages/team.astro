@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { team } from '../data/team';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="Our Team" description="Meet the providers at Progressive Women's Health: physicians and a nurse practitioner in gynecology, primary care, psychiatry and aesthetics.">
+  <section class="bg-plum-950 pb-16 pt-40 text-pearl-50 md:pb-20 md:pt-48">
+    <div class="wrap max-w-4xl">
+      <nav aria-label="Breadcrumb" class="text-sm text-pearl-50/60">
+        <ol class="flex items-center gap-2">
+          <li><a href="/" class="hover:text-pearl-50">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-champagne">Our Team</li>
+        </ol>
+      </nav>
+      <h1 class="mt-8 font-display text-5xl font-light leading-[1.05] md:text-7xl">Our team</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pearl-50/85">Experienced providers who listen first, explain clearly and treat the whole person.</p>
+    </div>
+  </section>
+
+  <section class="section bg-pearl-50">
+    <div class="wrap grid gap-8">
+      {team.map((p) => (
+        <article class="grid gap-8 rounded-3xl border border-pearl-200 bg-pearl-100 p-8 md:grid-cols-12 md:p-10">
+          <div class="md:col-span-4">
+            <div class="grid size-28 place-items-center rounded-full bg-plum-900 font-display text-4xl text-champagne" aria-hidden="true">{p.initials}</div>
+            <h2 class="mt-6 font-display text-3xl leading-tight text-plum-900 md:text-4xl">{p.name}</h2>
+            <p class="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-orchid-700">{p.role}</p>
+          </div>
+          <div class="md:col-span-8">
+            <h3 class="font-display text-2xl text-plum-900">Credentials</h3>
+            <dl class="mt-4 divide-y divide-pearl-200 border-y border-pearl-200">
+              {p.credentials.map((c) => (
+                <div class="grid gap-1 py-4 sm:grid-cols-3 sm:gap-6">
+                  <dt class="text-sm font-semibold uppercase tracking-[0.12em] text-plum-900">{c.title}</dt>
+                  <dd class="space-y-1 text-ink sm:col-span-2">{c.lines.map((l) => <p>{l}</p>)}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="wrap mt-14 text-center">
+      <a href={site.bookingUrl} class="shiny"><span>Book Telemedicine</span></a>
+    </div>
+  </section>
+</BaseLayout>

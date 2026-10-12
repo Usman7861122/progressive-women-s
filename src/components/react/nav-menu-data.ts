@@ -63,6 +63,6 @@ export const navEntries: NavEntry[] = [
     all: { label: 'All locations', href: '/locations' },
   },
   { id: 3, label: 'Shop', href: '/shop' },
-  { id: 4, label: 'Our Team', href: '/about' },
+  { id: 4, label: 'Our Team', href: '/team' },
   { id: 5, label: 'Contact', href: '/#contact' },
 ];
