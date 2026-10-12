@@ -22,7 +22,7 @@ const h3 = 'font-display text-4xl font-light leading-tight md:text-5xl';
         <ol class="flex flex-wrap items-center gap-2">
           <li><a href="/" class="hover:text-pearl-50">Home</a></li>
           <li aria-hidden="true">/</li>
-          <li><a href={(c.parent ?? { href: '/conditions' }).href} class="hover:text-pearl-50">{(c.parent ?? { label: 'Conditions' }).label}</a></li>
+          <li><a href={(c.parent ?? { href: '/gynecology#conditions' }).href} class="hover:text-pearl-50">{(c.parent ?? { label: 'Gynecology' }).label}</a></li>
           <li aria-hidden="true">/</li>
           <li aria-current="page" class="text-champagne">{c.name}</li>
         </ol>

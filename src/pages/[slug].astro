@@ -5,6 +5,7 @@ import { photo } from '../data/images';
 import { site } from '../data/site';
 import CategoryCard from '../components/ui/CategoryCard.astro';
 import { detailLinks } from '../data/detail-links';
+import Conditions from '../components/sections/Conditions.astro';
 import NearYou from '../components/sections/NearYou.astro';
 import { near as buildNear, WELCOME, TELE } from '../data/condition-more';
 
@@ -155,6 +156,8 @@ const others = specialtyPages.filter((o) => o.slug !== s.slug);
       </div>
     </div>
   </section>
+
+  {s.slug === 'gynecology' && <Conditions all />}
 
   <NearYou heading={`${s.name} in Friendswood and nearby cities`} near={nearData} />
 

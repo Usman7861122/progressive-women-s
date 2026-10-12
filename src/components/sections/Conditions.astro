@@ -3,22 +3,21 @@ import { conditions } from '../../data/content';
 import { photo } from '../../data/images';
 import FlipCard from '../ui/FlipCard.astro';
 
-interface Props { all?: boolean }
-const { all = false } = Astro.props;
+interface Props { all?: boolean; heading?: string }
+const { all = false, heading = 'Gynecologic conditions' } = Astro.props;
 
 const featured = ['menopause', 'heavy-periods-menorrhagia', 'polycystic-ovarian-syndrome-pcos', 'ovarian-cysts', 'uterine-fibroids', 'infertility', 'annual-exams', 'sexually-transmitted-infections'];
 const items = all ? conditions : conditions.filter((c) => featured.includes(c.slug));
 ---
 
-<section id="conditions" class="section bg-pearl-50">
+<section id="conditions" class="section scroll-mt-20 bg-pearl-100">
   <div class="wrap">
     <div class="mb-14 flex flex-wrap items-end justify-between gap-8">
       <div class="max-w-2xl">
-        <h2 class="h2 text-plum-900">Conditions we treat</h2>
-        <p class="lede mt-6">Whatever you are facing, you will get a clear explanation and a plan made for you. Hover over a card to read more.</p>
+        <h2 class="h2 text-plum-900">{heading}</h2>
+        <p class="lede mt-6">Every gynecologic condition we care for, each with its own page. You will get a clear explanation and a plan made for you. Hover over a card to read more.</p>
       </div>
-      {!all && <a href="/conditions" class="btn btn-solid">View all conditions</a>}
-    </div>
+          </div>
 
     <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((c) => (
