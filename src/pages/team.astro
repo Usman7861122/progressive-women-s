@@ -24,7 +24,11 @@ import { site } from '../data/site';
       {team.map((p) => (
         <article class="grid gap-8 rounded-3xl border border-pearl-200 bg-pearl-100 p-8 md:grid-cols-12 md:p-10">
           <div class="md:col-span-4">
-            <div class="grid size-28 place-items-center rounded-full bg-plum-900 font-display text-4xl text-champagne" aria-hidden="true">{p.initials}</div>
+            {p.photo ? (
+              <img src={p.photo} alt={p.name} width="400" height="500" loading="lazy" class="aspect-[4/5] w-full max-w-[16rem] rounded-2xl object-cover object-top" />
+            ) : (
+              <div class="grid aspect-[4/5] w-full max-w-[16rem] place-items-center rounded-2xl bg-plum-900 font-display text-6xl text-champagne" aria-hidden="true">{p.initials}</div>
+            )}
             <h2 class="mt-6 font-display text-3xl leading-tight text-plum-900 md:text-4xl">{p.name}</h2>
             <p class="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-orchid-700">{p.role}</p>
           </div>

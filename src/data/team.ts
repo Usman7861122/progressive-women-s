@@ -3,6 +3,7 @@ export type Provider = {
   name: string;
   role: string;
   initials: string;
+  photo?: string;
   credentials: { title: string; lines: string[] }[];
 };
 
@@ -11,6 +12,7 @@ export const team: Provider[] = [
     name: 'Asia Mohsin, MD',
     role: 'Physician',
     initials: 'AM',
+    photo: '/images/about/asia-mohsin.jpg',
     credentials: [
       { title: 'Medical school', lines: ['Rawalpindi Medical College, Rawalpindi, Pakistan | 2001'] },
       { title: 'Residency', lines: ['SUNY, Buffalo, NY | 2009'] },
