@@ -43,7 +43,7 @@ export const locationPages: LocationPage[] = [
     summary:
       'Our Friendswood office is where our Providers see patients in person. You can also choose a telemedicine visit from home. We welcome patients from across the Bay Area and south Houston.',
     lines: ['907 South Friendswood Drive, Suite 109', 'Friendswood, TX 77546'],
-    phone: '281-626-7694',
+    phone: '281-993-4072',
     email: 'contact@progressivewomenshealthonline.com',
     mapQuery: '907 South Friendswood Drive Suite 109 Friendswood TX 77546',
     img: IMG.examRoom,

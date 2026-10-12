@@ -3,9 +3,10 @@ export const site = {
   legal: "Progressive Womens Health, PLLC",
   doctor: 'Asia Mohsin, MD',
   tagline: 'Clinical excellence. Compassionate care.',
-  phoneBook: '281-626-7694',
+  phoneBook: '281-993-4072',
   email: 'contact@progressivewomenshealthonline.com',
   phoneInfo: '281-993-4072',
+  fax: '281-993-8051',
   address: ['907 South Friendswood Drive, Suite 109', 'Friendswood, TX 77546'],
   mapQuery: '907 South Friendswood Drive Suite 109 Friendswood TX 77546',
   rating: { score: '4.9', count: 327 },
@@ -18,7 +19,7 @@ export const site = {
   payPortalUrl: '#',
   locations: [
     { name: 'Kenner, LA', note: 'Telemedicine for now', lines: ['4113 Williams Blvd', 'Kenner, LA 70065'], phone: '281-993-4072', mapQuery: '4113 Williams Blvd Kenner LA 70065' },
-    { name: 'Friendswood, TX', note: '', lines: ['907 South Friendswood Drive, Suite 109', 'Friendswood, TX 77546'], phone: '281-626-7694', mapQuery: '907 South Friendswood Drive Suite 109 Friendswood TX 77546' },
+    { name: 'Friendswood, TX', note: '', lines: ['907 South Friendswood Drive, Suite 109', 'Friendswood, TX 77546'], phone: '281-993-4072', mapQuery: '907 South Friendswood Drive Suite 109 Friendswood TX 77546' },
   ],
   disclaimer: 'This website is for general information only and is not medical advice. Using it does not create a patient-provider relationship. Individual results vary.',
   // Opens the Google Maps listing (with reviews). TODO: swap for the exact share link from Google Business Profile.
